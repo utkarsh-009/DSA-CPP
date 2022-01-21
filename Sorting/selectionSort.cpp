@@ -6,15 +6,17 @@ void selectionSort(int arr[], int n)
 {
     for (int i = 0; i < n; i++)
     {
-        int min_ind = i;
-        for (int j = i + 1; j < n; j++)
+        //Initially assign index 0 as min_ind
+        int min_ind = i; //min_ind is a variable which will store index of minimum value element
+
+        for (int j = i + 1; j < n; j++) // Loop to get actual min_ind value from array
         {
-            if (arr[min_ind] > arr[j])
+            if (arr[min_ind] > arr[j]) // Updating index of the min_ind, if we get lower value element
             {
                 min_ind = j;
             }
         }
-        swap(arr[i], arr[min_ind]);
+        swap(arr[i], arr[min_ind]); // Swapping of the element with min_ind element
     }
 }
 

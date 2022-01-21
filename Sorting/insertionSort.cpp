@@ -3,16 +3,21 @@ using namespace std;
 
 void insertionSort(int arr[], int n)
 {
-    for (int i = 1; i < n; i++)
+    for (int i = 1; i < n; i++) //NOTE: loop start from i = 1 to n-1 -> "(n-2) loops"
     {
-        int key = arr[i];
+        //Key is the element which we will be inserting at correct position
+        int key = arr[i]; // Initially, key = arr[1], as we will check its correct position from ind = 1 to ind = 0
+
         int j = i - 1;
-        while (j >= 0 && arr[j] > key)
+        // j is assigned as i - 1, as we will be running loop from (i-1)th index until we find correct position of key in range (0, i - 1)
+
+        while (j >= 0 && arr[j] > key) // Running while loop, until we find correct place for key
         {
             arr[j + 1] = arr[j];
             j--;
         }
-        arr[j + 1] = key;
+        //As soon as arr[j] <= key, while loop will break
+        arr[j + 1] = key; // We will assign key to (j+1)th index position
     }
 }
 
