@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//Time Complexity: O[(m+n)log(m+n)]
+//Space Complexity: O(m+n)
 void naiveMergeSort2Arr(int a[], int b[], int m, int n)
 {
     int c[m + n]; // Defining array of size m + n, as it will store merged and sorted elements of array a & b
@@ -15,11 +17,11 @@ void naiveMergeSort2Arr(int a[], int b[], int m, int n)
         c[m + j] = b[j]; // Copying elements of array b after copying elements of a
     }
 
-    sort(c, c + m + n);// After copying all elements of a and b, we will sort array
+    sort(c, c + m + n); // After copying all elements of a and b, we will sort array
 
     for (int i = 0; i < m + n; i++)
     {
-        cout << c[i] << " ";// Printing elements of c, after merging and sorting
+        cout << c[i] << " "; // Printing elements of c, after merging and sorting
     }
 }
 
