@@ -57,12 +57,14 @@ void merge(int arr[], int low, int mid, int high)
 
 void mergeSort(int arr[], int l, int r)
 {
-    if (r > l)
+    if (r > l) //Atleast 2 elements required to use mergeSort function, as l = r => size of element is 1
     {
-        int m = l + (r - l) / 2;
-        mergeSort(arr, l, m);
-        mergeSort(arr, m + 1, r);
-        merge(arr, l, m, r);
+        int m = l + (r - l) / 2; // This variable stores middle value of the array
+        //This m is written as l+(r-l)/2 instead of (r+l)/2, inorder to avoid overflow
+
+        mergeSort(arr, l, m);     //Recursively sorting left sub array
+        mergeSort(arr, m + 1, r); //Recursively sorting right sub array
+        merge(arr, l, m, r);      //Merging these two arrays using merge function, to finally get whole sorted array
     }
 }
 
@@ -79,7 +81,7 @@ int main()
 
     cout << endl;
 
-    //merge sort
+    //merge sort function
     int arr[] = {23, 56, 32, 775, 23, 775, 3, 1000, 64};
 
     int n = sizeof(arr) / sizeof(arr[0]); // Size of array is calculated in this manner
