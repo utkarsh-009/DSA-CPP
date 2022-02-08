@@ -2,7 +2,7 @@
 using namespace std;
 
 // To print common elements of two array (excluding their duplicates)
-void intersectionOf2SortedArr(int a[], int b[], int m, int n)
+void intersectionOf2UnsortedArr(int a[], int b[], int m, int n)
 {
     // Initially sorting two given arrays
     sort(a, a + m);
@@ -37,7 +37,7 @@ void intersectionOf2SortedArr(int a[], int b[], int m, int n)
 int main()
 {
     int a1[] = {10, 30, 60, 20, 40};
-    int a2[] = {20, 2, 20, 30, 40};
+    int a2[] = {20, 2, 20, 30};
 
-    intersectionOf2SortedArr(a1, a2, 5, 5);
+    intersectionOf2UnsortedArr(a1, a2, 5, 4);
 }
