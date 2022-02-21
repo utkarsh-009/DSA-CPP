@@ -2,6 +2,7 @@
 using namespace std;
 
 // If i < j && arr[i] > arr[j] => Count Inversion
+// Time complexity: O(n^2)
 int naiveCountInversion(int arr[], int n)
 {
     int cnt = 0; // To count no of count inversion
