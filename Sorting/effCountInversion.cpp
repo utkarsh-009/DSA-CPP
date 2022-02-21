@@ -7,11 +7,11 @@ int countAndMerge(int arr[], int l, int m, int r)
     int left[n1], right[n2];
     for (int i = 0; i < n1; i++)
     {
-        left[i] = arr[i];
+        left[i] = arr[i + l];
     }
     for (int j = 0; j < n2; j++)
     {
-        right[j] = arr[n1 + j];
+        right[j] = arr[m + 1 + j];
     }
 
     int res = 0, i = 0, j = 0, k = l;
@@ -21,14 +21,15 @@ int countAndMerge(int arr[], int l, int m, int r)
         {
             arr[k] = left[i];
             i++;
+            k++;
         }
         else
         {
             arr[k] = right[j];
             j++;
+            k++;
             res = res + (n1 - i);
         }
-        k++;
     }
     while (i < n1)
     {
@@ -50,7 +51,7 @@ int effCountInversion(int arr[], int l, int r)
     int res = 0;
     if (l < r)
     {
-        int m = l + (r - l) / 2;
+        int m = (r + l) / 2;
         res += effCountInversion(arr, l, m);
         res += effCountInversion(arr, m + 1, r);
         res += countAndMerge(arr, l, m, r);
