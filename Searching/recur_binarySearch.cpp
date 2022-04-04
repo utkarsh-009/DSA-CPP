@@ -39,5 +39,6 @@ int main()
     }
     cout << "\n";
 
-    cout << binSearch(arr, 0, n - 1, 17);
+    cout << binSearch(arr, 0, n - 1, 17) << endl;
+    cout << binSearch(arr, n, 27);
 }
