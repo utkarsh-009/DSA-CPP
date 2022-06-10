@@ -2,7 +2,7 @@
 using namespace std;
 
 // Kadane's Algortihm is used to find max contiguous subarray sum within 1-D array
-// The idea is to look for sum of all contiguous subarray sum unless and until, the sum becomes less than 0
+// The idea is to look for sum of all contiguous subarray unless and until the sum becomes less than 0
 int KadanesAlgo(int arr[], int n)
 {
     int sum = 0;
