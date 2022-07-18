@@ -47,6 +47,7 @@ void printLL(Node *head)
 
 int main()
 {
+
     Node *head = NULL;
     head = insertAtBegin(head, 30);
     head = insertAtBegin(head, 20);
