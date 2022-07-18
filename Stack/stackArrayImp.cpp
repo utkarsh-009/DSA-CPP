@@ -65,7 +65,7 @@ struct MyStack
     {
         return (top == -1);
     }
-
+    // printing stack without affecting stack
     void printStack()
     {
         int ind = top;
