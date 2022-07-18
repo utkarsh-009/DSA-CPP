@@ -1,3 +1,10 @@
+/*
+
+I/P: 10->20->30->NULL, x = 5
+O/P: 5->10->20->30->NULL
+
+*/
+
 #include <iostream>
 using namespace std;
 
