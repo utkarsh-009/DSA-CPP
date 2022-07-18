@@ -12,7 +12,7 @@ struct Node
     Node(int x)
     {
         int data = x;
-        next = NULL;
+        next = NULL; // Initialise next pointer as NULL
     }
 };
 
