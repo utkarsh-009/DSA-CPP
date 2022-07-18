@@ -18,6 +18,7 @@ struct Node
 
 int main()
 {
+
     // 10-> 20-> 30
     Node *head = new Node(10);
     Node *temp1 = new Node(20);
