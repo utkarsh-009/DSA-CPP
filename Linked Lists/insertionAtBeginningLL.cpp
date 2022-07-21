@@ -25,9 +25,8 @@ struct Node
 Node *insertAtBegin(Node *head, int x)
 {
 
-    Node *temp; // Creating a temporary node
-    // Declaring the value and its next pointer as head
-    temp->data = x;
+    Node *temp = new Node(x); // Creating a temporary node with initialising its value
+    // Declaring its next pointer as head
     temp->next = head;
 
     // Returning the temp node
@@ -52,4 +51,6 @@ int main()
     head = insertAtBegin(head, 30);
     head = insertAtBegin(head, 20);
     head = insertAtBegin(head, 10);
+
+    printLL(head);
 }
