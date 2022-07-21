@@ -26,6 +26,22 @@ void printLL(Node *head)
     }
 }
 
+Node *revDLL(Node *head)
+{
+    Node *curr = head;
+    Node *prevTOcurr = NULL;
+    while (curr != NULL)
+    {
+        prevTOcurr = curr->prev;
+        curr->prev = curr->next;
+        curr->next = prevTOcurr;
+
+        curr = curr->prev;
+    }
+
+    return prevTOcurr->prev;
+}
+
 int main()
 {
     Node *head = new Node(10);
@@ -37,4 +53,6 @@ int main()
 
     temp1->next = temp2;
     temp2->prev = temp1;
+
+    printLL(revDLL(head));
 }

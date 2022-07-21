@@ -15,6 +15,16 @@ struct Node
     }
 };
 
+Node *insertAtBeginDLL(Node *head, int x)
+{
+    Node *temp = new Node(x);
+
+    temp->next = head;
+    head->prev = temp;
+
+    return temp;
+}
+
 // To print Linked List
 void printLL(Node *head)
 {
@@ -37,4 +47,6 @@ int main()
 
     temp1->next = temp2;
     temp2->prev = temp1;
+
+    printLL(insertAtBeginDLL(head, 5));
 }
