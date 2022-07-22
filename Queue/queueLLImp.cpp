@@ -3,7 +3,7 @@ using namespace std;
 
 struct Queue
 {
-    int size, cap, front, rear;
+    int size, cap;
     int *arr;
 
     Queue(int c)
@@ -11,9 +11,6 @@ struct Queue
         size = 0;
         cap = c;
         arr = new int[cap];
-
-        front = size;
-        rear = cap - 1;
     }
 
     bool isFull()
@@ -33,9 +30,7 @@ struct Queue
             return;
         }
 
-        rear = (rear + 1) % cap;
-
-        arr[rear] = x;
+        arr[size] = x;
         size++;
     }
 
@@ -46,7 +41,10 @@ struct Queue
             return;
         }
 
-        front = (front + 1) % cap;
+        for (int i = 0; i < size - 1; i++)
+        {
+            arr[i] = arr[i + 1];
+        }
         size--;
     }
 
@@ -71,12 +69,8 @@ struct Queue
 
 void printQ(Queue *myQ)
 {
-    for (int i = myQ->front; i <= myQ->rear; i++)
+    for (int i = 0; i < myQ->size; i++)
     {
-        if (i >= myQ->cap)
-        {
-            i = i % myQ->cap;
-        }
         cout << myQ->arr[i] << " ";
     }
 }
