@@ -5,7 +5,7 @@ int hPartition(int arr[], int l, int h)
 {
     int pivot = arr[l]; // First element is taken as pivot in Hoares partition
 
-    int i = l - 1, j = h + 1; // Here i will help in lHS partition and RHS partition j will  of array
+    int i = l - 1, j = h + 1; // Here i will help in lHS partition and j will help in RHS partition of array
     while (true)
     { // The do-while loop will increment i first, and then check codition
 
@@ -43,7 +43,7 @@ void quickSort(int arr[], int l, int h)
 
 int main()
 {
-    int a[] = {23, 56, 32, 775, 23, 775, 3, 1000, 64};
+    int a[] = {23, 56, 32, 3, 64};
 
     int n = sizeof(a) / sizeof(a[0]); // Size of array is calculated in this manner
     quickSort(a, 0, n);
