@@ -1,21 +1,28 @@
 #include <iostream>
 using namespace std;
 
+struct Node
+{
+    int data;
+    Node *next;
+
+    Node(int x)
+    {
+        data = x;
+        next = NULL;
+    }
+};
+
 struct Queue
 {
-    int size, cap;
-    int *arr;
+    int size;
+    Node *front, *rear;
 
     Queue(int c)
     {
+        front = NULL;
+        rear = NULL;
         size = 0;
-        cap = c;
-        arr = new int[cap];
-    }
-
-    bool isFull()
-    {
-        return (size == cap);
     }
 
     bool isEmpty()
@@ -25,13 +32,19 @@ struct Queue
 
     void enqueue(int x)
     {
-        if (isFull())
+        Node *temp = new Node(x);
+
+        size++;
+        if (front == NULL)
         {
+            front = temp;
+            rear = temp;
+
             return;
         }
 
-        arr[size] = x;
-        size++;
+        rear->next = temp;
+        rear = temp;
     }
 
     void dequeue()
@@ -41,37 +54,33 @@ struct Queue
             return;
         }
 
-        for (int i = 0; i < size - 1; i++)
+        Node *temp = front;
+        front = front->next;
+
+        if (front->next == NULL)
         {
-            arr[i] = arr[i + 1];
+            rear = NULL;
         }
-        size--;
+
+        delete (temp);
     }
 
     int getFront()
     {
-        if (isEmpty())
-        {
-            return -1;
-        }
-        return arr[0];
+        return front->data;
     }
 
     int getRear()
     {
-        if (isEmpty())
-        {
-            return -1;
-        }
-        return arr[size - 1];
+        return rear->data;
     }
 };
 
 void printQ(Queue *myQ)
 {
-    for (int i = 0; i < myQ->size; i++)
+    for (Node *curr = myQ->front; curr != NULL; curr = curr->next)
     {
-        cout << myQ->arr[i] << " ";
+        cout << curr->data << " ";
     }
 }
 
@@ -80,6 +89,7 @@ int main()
     Queue *myQ = new Queue(5);
     cout << "Is Empty: " << myQ->isEmpty() << endl;
 
+    Node *head;
     myQ->enqueue(1);
     myQ->enqueue(2);
     myQ->enqueue(3);
@@ -88,8 +98,7 @@ int main()
 
     printQ(myQ);
     cout << endl;
-
-    cout << "Is Full: " << myQ->isFull() << endl;
+    cout << "Is Empty: " << myQ->isEmpty() << endl;
 
     myQ->dequeue();
     myQ->dequeue();
@@ -97,6 +106,6 @@ int main()
     printQ(myQ);
     cout << endl;
 
-    cout << "Front  is : " << myQ->getFront() << endl;
-    cout << "Rear  is : " << myQ->getRear() << endl;
+    cout << "Front is: " << myQ->getFront() << endl;
+    cout << "Rear is: " << myQ->getRear() << endl;
 }
