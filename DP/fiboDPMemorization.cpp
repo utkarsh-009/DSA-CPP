@@ -4,7 +4,7 @@ using namespace std;
 // MEMORIZATION TECHNIQUE (TOP DOWN APPROACH)
 //  Time Complexity : O(n)
 //  Space Complexity : O(n)
-
+ 
 // Function to find Fibonacci Sequence using DP with Memorization Technique
 int fiboDP(int n, vector<int> memo)
 {
@@ -23,15 +23,12 @@ int fiboDP(int n, vector<int> memo)
     }
     return memo[n]; // returning the value of the nth fibonacci number
 }
-
+ 
 int main()
 {
     vector<int> memo(100, -1); // initialising values of memory array as -1
     // This -1 indicates that this fibonacci number is not computed before
     memo[0] = 0;
-
-    for (int i = 0; i <= 10; i++)
-    {
-        cout << fiboDP(i, memo) << " ";
-    }
+ 
+    cout << fiboDP(10, memo); // number present at index 10 in fibonacci sequence
 }
