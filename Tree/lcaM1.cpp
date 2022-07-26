@@ -8,7 +8,7 @@ LCA of 5 and 6
 
 O/P: 10
 
-TC: O(n + n*h), AS: O(n*h)
+TC: O(n), AS: O(n)
 */
 
 #include <iostream>
