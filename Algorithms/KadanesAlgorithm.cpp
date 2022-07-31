@@ -1,3 +1,9 @@
+/*
+  Lets take the example: {-2, -3, 4, -1, -2, 1, 5, -3}
+
+  To find largest subarray sum/ Max contiguous array sum : 7 (4 + -1 + -2 + 1 + 5)
+*/
+
 #include <iostream>
 using namespace std;
 
