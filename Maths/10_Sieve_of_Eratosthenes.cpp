@@ -56,7 +56,7 @@ void printPrimes(int n)
     cout << endl;
 }
 
-// Efficient Approach: Sieve of Eratosthenes
+// Efficient Approach: Sieve of Eratosthenes [TC: O(n*log(logn)) => Term 'log(logn)' is so small that, TC: O(n)]
 void seieveOfEratosthenes(int n)
 {
     vector<bool> isPrimeNum(n + 1, true);
