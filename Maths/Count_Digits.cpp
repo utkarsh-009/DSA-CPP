@@ -1,3 +1,11 @@
+/*
+    I/P: 7345
+    O/P: 4
+
+    I/P: 0
+    O/P: 1
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
