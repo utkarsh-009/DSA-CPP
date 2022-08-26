@@ -1,15 +1,18 @@
+/*
+    I/P: 5
+    O/P: 120
+
+    I/P: 0
+    O/P: 1
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
-/*
-n = 5 => 120
-n = 0 => 1
-*/
-
 // Iterative (AS: O(1), TC: O(n))
-int fact(int n)
+long long fact(long long n)
 {
-    int ans = 1;
+    long long ans = 1;
     for (int i = 1; i <= n; i++)
     {
         ans *= i;
@@ -19,7 +22,7 @@ int fact(int n)
 }
 
 // Recursive (Note: extra recursion call overhead, AS: O(n), TC: O(n) => Iterative Solution Better)
-int fact(int n)
+long long fact(long long n)
 {
     if (n == 0)
     {
