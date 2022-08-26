@@ -1,12 +1,15 @@
+/*
+    I/P: a = 4
+    O/P: NO
+
+    I/P: a = 7
+    O/P: YES
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
 
-/*
-a = 4, b = 6 => 12
-a = 100, b = 200 => 200
-*/
-
-// Naive
+// Efficient [TC: O(sqrt(n)), AS: O(1)]
 bool isPrime(int n)
 {
     if (n == 1)
@@ -14,7 +17,7 @@ bool isPrime(int n)
         return false;
     }
 
-    for (int i = 2; i < n; i++)
+    for (int i = 2; i * i < n; i++)
     {
         if (n % i == 0)
         {
@@ -25,7 +28,7 @@ bool isPrime(int n)
     return true;
 }
 
-// Efficient
+// Efficient Optimised [Three times faster than above approach]
 bool isPrimeEff(int n)
 {
     if (n == 1)
