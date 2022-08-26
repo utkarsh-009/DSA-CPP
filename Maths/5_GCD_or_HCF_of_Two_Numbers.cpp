@@ -56,7 +56,7 @@ NOTE:
 */
 
 // Euclidean Algorithm [TC: O(min(a,b)), AS: O(min(a,b))]
-int gcdEuclideanAlgo(int a, int b) // Initial Condition: a > b;
+int gcdEuclideanAlgo(int a, int b)
 {
     // Everything divides 0
     if (a == 0)
