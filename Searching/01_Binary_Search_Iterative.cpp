@@ -2,6 +2,7 @@
 #include <algorithm>
 using namespace std;
 
+// [TC: O(logn), AS: O(1)]
 int binSearch(int arr[], int n, int x)
 {
     int low = 0, high = n - 1;
