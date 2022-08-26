@@ -7,7 +7,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//  1 to N [TC: O(n),AS: O(n)] (Tail Recursion)
+//  1 to N [TC: O(n),AS: O(n)] (Tail Call Recursion)
 void print1toN(int n)
 {
     if (n == 0)
@@ -19,7 +19,7 @@ void print1toN(int n)
     cout << n << " ";
 }
 
-// N to 1 [TC: O(n),AS: O(n)] (No Tail Recursion)
+// N to 1 [TC: O(n),AS: O(n)] (No Tail Call Recursion)
 void printNto1(int n)
 {
     if (n == 0)
