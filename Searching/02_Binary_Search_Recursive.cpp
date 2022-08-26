@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// [TC: O(logn), AS: O(logn)]
 int binSearch(int arr[], int low, int high, int x)
 {
     // As low is either increasing or high is decreasing after every recursive call. Hence, at some point incase of unsuccesful search low > high
