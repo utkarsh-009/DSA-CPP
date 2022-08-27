@@ -50,7 +50,7 @@ int firstOccRecur(int arr[], int l, int h, int x)
         {
             return mid;
         }
-        else // Given element but not first occurence
+        else // Given element found but not first occurence
         {
             return firstOccRecur(arr, l, mid - 1, x);
         }
@@ -80,7 +80,7 @@ int firstOccIter(int arr[], int n, int x)
             {
                 return mid;
             }
-            else // Given element but not first occurence
+            else // Given element found but not first occurence
             {
                 h = mid - 1;
             }
