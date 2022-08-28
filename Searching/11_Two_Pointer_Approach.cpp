@@ -11,7 +11,7 @@ Find pair in sorted array which gives sum X
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+// Using Two Pointer [TC: O(n),AS: O(1)]
 bool isPresent(int arr[], int n, int sum)
 {
     int low = 0, high = n - 1, pairSum = 0;
