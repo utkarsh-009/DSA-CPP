@@ -38,9 +38,30 @@ midPos = 2 + 5 + 1 = 8 (medPos = midPos)
 min = 11 and max = 11
 */
 
-const int R = 3, C = 5;
-int matMed(int mat[R][C], int r, int c) // TC: O(R*log(max-min)*logC)
+const int MAX = 100;
+
+// Naive [TC: R*C*log(R*C)]
+double matMedNaive(int mat[][MAX], int R, int C)
 {
+    vector<int> v;
+    for (int i = 0; i < R; i++)
+    {
+        for (int j = 0; j < C; j++)
+        {
+            v.push_back(mat[i][j]);
+        }
+    }
+
+    sort(v.begin(), v.end());
+    int medPos = (R * C) / 2;
+
+    return ((R * C % 2 != 0) ? v[medPos] : (double)(v[medPos] + v[medPos - 1]) / 2); // if case when total no of elements are even => v[medPos] and v[medPos - 1]
+}
+
+// Efficient Using Binary Search [TC: O(R*log(max-min)*logC)]
+int matMedEff(int mat[][MAX], int R, int C)
+{
+    // Finding min and max element in matrix
     int min = mat[0][0], max = mat[0][C - 1];
     for (int i = 0; i < R; i++)
     {
@@ -54,29 +75,42 @@ int matMed(int mat[R][C], int r, int c) // TC: O(R*log(max-min)*logC)
         }
     }
 
-    int medPos = (r * c + 1) / 2;
+    int medPos = (R * C + 1) / 2; // Position of median will be in middile of all elements => (Total no of elements)/2
+
+    /*
+    // Binary Search
+        For a number to be median, there should be exactly (n/2) numbers which are less than this number
+        => mid : Candidate for median
+        => midPos : No of elements smaller than mid
+        => medPos : The actual no of elements that should be less than median
+    */
+
     while (min < max)
     {
-        int mid = (mid + max) / 2;
+        int mid = (min + max) / 2; // Candidate for median
         int midPos = 0;
+
+        // Finding count of elements smaller than mid
         for (int i = 0; i < R; i++)
         {
             midPos += upper_bound(mat[i], mat[i] + C, mid) - mat[i];
         }
-        if (midPos < medPos)
+        if (midPos < medPos) // The candidate is smaller than median
         {
             min = mid + 1;
         }
-        else
+        else // candidate is equal to or greater than median
         {
             max = mid;
         }
     }
-    return min;
+    return min; // min stores median of matrix
 }
 
 int main()
 {
-    int m[R][C] = {{5, 10, 20, 30, 40}, {1, 2, 3, 4, 6}, {11, 13, 15, 17, 19}};
-    cout << "Median is " << matMed(m, R, C) << endl;
+    int m[][MAX] = {{5, 10, 20, 30, 40}, {1, 2, 3, 4, 6}, {11, 13, 15, 17, 19}};
+    // int m[][MAX] = {{5, 10, 20, 30}, {1, 2, 3, 4}, {11, 13, 15, 17}};
+    cout << "Median is " << matMedNaive(m, 3, 5) << endl;
+    cout << "Median is " << matMedEff(m, 3, 5) << endl;
 }
