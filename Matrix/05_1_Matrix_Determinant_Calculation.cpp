@@ -1,11 +1,11 @@
 /*
-Input:
-N = 4
-matrix[][] = {{1, 0, 2, -1},
-              {3, 0, 0, 5},
-              {2, 1, 4, -3},
-              {1, 0, 5, 0}}
-Output: 30
+    Input:
+    N = 4
+    matrix[][] = {{1, 0, 2, -1},
+                {3, 0, 0, 5},
+                {2, 1, 4, -3},
+                {1, 0, 5, 0}}
+    Output: 30
 */
 
 #include <bits/stdc++.h>
@@ -42,7 +42,7 @@ int determinantOfMatrix(vector<vector<int>> matrix, int n)
             temp.push_back(v);
         }
 
-        if (i % 2 != 0)
+        if (i % 2 != 0) // For alternate adding and subtracting co-factors
         {
             ans -= (matrix[0][i]) * determinantOfMatrix(temp, n - 1); // Recursievly calling calculating value of sub matrix and finding determinant value
         }
