@@ -44,11 +44,11 @@ int determinantOfMatrix(vector<vector<int>> matrix, int n)
 
         if (i % 2 != 0) // For alternate adding and subtracting co-factors
         {
-            ans -= (matrix[0][i]) * determinantOfMatrix(temp, n - 1); // Recursievly calling calculating value of sub matrix and finding determinant value
+            ans -= (matrix[0][i]) * (determinantOfMatrix(temp, n - 1)); // Recursievly calling & calculating value of sub matrix and finding determinant value
         }
         else
         {
-            ans += (matrix[0][i]) * (determinantOfMatrix(temp, n - 1)); // Recursievly calling calculating value of sub matrix and finding determinant value
+            ans += (matrix[0][i]) * (determinantOfMatrix(temp, n - 1)); // Recursievly calling & calculating value of sub matrix and finding determinant value
         }
     }
 
