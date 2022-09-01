@@ -17,7 +17,7 @@ private: // id, name are set as private data members
     string name;
 
 public:
-    // Here, printEmp function of class Printer is declared as friend function which will allow to access private data members of employee class
+    // Here, printEmp function of class Printer is declared as friend function which will allow to access private data members of Employee class
     friend void Printer ::printEmp(const Employee &e);
     Employee(int i, string n) : id(i), name(n) {}
 };
