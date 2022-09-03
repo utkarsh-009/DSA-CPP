@@ -6,6 +6,10 @@
     O/P: -1
 */
 
+#include <bits/stdc++.h>
+using namespace std;
+
+//  [TC: O(n),AS: O(1)] => Best Case: Element Present At Begining, Worst Case: Element Not Present
 int search(int arr[], int n, int x)
 {
     for (int i = 0; i < n; i++)
@@ -19,11 +23,8 @@ int search(int arr[], int n, int x)
     return -1;
 }
 
-#include <bits/stdc++.h>
-using namespace std;
-
-//  [TC: ,AS:]
-
 int main()
 {
+    int arr[] = {20, 5, 7, 25}, x = 5;
+    cout << search(arr, 4, x);
 }
