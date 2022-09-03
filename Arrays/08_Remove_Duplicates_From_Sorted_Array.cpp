@@ -18,7 +18,6 @@ int removeDupFromSortedArr(int arr[], int n)
             ind++;
         }
     }
-
     return ind;
 }
 
