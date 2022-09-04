@@ -19,7 +19,7 @@ Kadanes Algo Intution:
 NOTE: If arr[i] is the candidate to become part of maxSS => We update maxSS by maxSS = max(maxSS, sum)
 */
 
-int maxSubarraySumDivAndCon(int arr[], int n)
+int maxSubarraySum(int arr[], int n)
 {
     int maxSS = 0, sum = 0;
 
