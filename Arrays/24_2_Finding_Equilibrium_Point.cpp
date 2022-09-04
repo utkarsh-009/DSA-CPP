@@ -37,5 +37,6 @@ int findEquilibriumPoint(int arr[], int n)
 int main()
 {
     int arr[] = {3, 4, 8, -9, 20, 6}, n = 6;
+
     cout << findEquilibriumPoint(arr, n);
 }
