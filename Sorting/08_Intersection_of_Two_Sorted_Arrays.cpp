@@ -67,5 +67,6 @@ int main()
 
     int m = sizeof(a) / sizeof(a[0]);
     int n = sizeof(b) / sizeof(b[0]);
+
     intersectionEff(a, b, m, n);
 }
