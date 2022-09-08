@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 
+// Quick Sort Using Hoarse Partition [TCavg: O(nlogn), AS: O(1)], NOTE: In worst case, TC can go upto O(n*n)
 int hPartition(int arr[], int l, int h)
 {
     int pivot = arr[l]; // First element is taken as pivot in Hoares partition
 
-    int i = l - 1, j = h + 1; // Here i will help in lHS partition and j will help in RHS partition of array
+    int i = l - 1, j = h + 1; // starting i and j iterators before start and after end respectively
     while (true)
     { // The do-while loop will increment i first, and then check codition
 
@@ -36,8 +37,8 @@ void quickSort(int arr[], int l, int h)
     if (l < h)
     {
         int p = hPartition(arr, l, h); // returns a pivot around which partition is done
-        quickSort(arr, l, p - 1);      // Recursievly quickSorting LHS
-        quickSort(arr, p + 1, h);      // Recursievly quickSorting RHS
+        quickSort(arr, l, p - 1);      // Recursievly quickSorting LHS taking h = p - 1
+        quickSort(arr, p + 1, h);      // Recursievly quickSorting RHS taking l = p + 1
     }
 }
 
