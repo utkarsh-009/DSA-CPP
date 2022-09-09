@@ -16,18 +16,22 @@ int m = s1.length(), n = s2.length();
 
 vector<vector<int>> memo(m + 1, vector<int>(n + 1, -1)); // Global Memorization Array to store solutions of subproblem required by main problem
 
+// Memorisation Technique  [TC: O(m*n)]
 int lcs(string s1, string s2, int m, int n)
 {
-    if (memo[m][n] != -1)
+    // DP Optimisation Step
+    if (memo[m][n] != -1) // If memo[m][n] != -1 => solution already computed in some recursive call
     {
         return memo[m][n];
     }
 
-    if (m == 0 || n == 0)
+    // Base Case
+    if (m == 0 || n == 0) // if any of the string length becomes 0 => return 0
     {
         return 0;
     }
 
+    // We find lcs by comparing ends of the strings
     if (s1[m - 1] == s2[n - 1])
     {
         return 1 + lcs(s1, s2, m - 1, n - 1);
