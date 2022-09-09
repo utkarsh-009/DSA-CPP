@@ -11,18 +11,19 @@ O/P: 3 (Common Subsequence => A, D, H)
 #include <vector>
 using namespace std;
 
+// Tabulation Technique  [TC: O(m*n), AS: O(m*n)]
 int lcs(string s1, string s2)
 {
     int m = s1.length(), n = s2.length();
 
     vector<vector<int>> dp(m + 1, vector<int>(n + 1, -1)); // Tabulation Array to store solutions of all subproblems
 
-    for (int i = 0; i <= m; i++)
+    for (int i = 0; i <= m; i++) // All zeroes in 1st column
     {
         dp[i][0] = 0;
     }
 
-    for (int j = 0; j <= n; j++)
+    for (int j = 0; j <= n; j++) // All zeroes in 1st row
     {
         dp[0][j] = 0;
     }
@@ -31,14 +32,17 @@ int lcs(string s1, string s2)
     {
         for (int j = 1; j <= n; j++)
         {
-            if (s1[i - 1] == s2[j - 1])
+            // MATCHING Condition: dp[i][j] = 1 + dp[i - 1][j - 1]
+            if (s1[i - 1] == s2[j - 1]) // Subsequence found
             {
-                dp[i][j] = 1 + dp[i - 1][j - 1];
+                // dp[i-1][j-1] stores lcs until now
+                dp[i][j] = 1 + dp[i - 1][j - 1]; // Store the new lcs in dp[i][j] by adding 1 to dp[i-1][j-1]
             }
-            else
-            {
 
-                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+            // NOT MATCHING Condition => dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+            else // No subsequence found
+            {
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]); // Store the new lcs in dp[i][j] by finding max of dp[i-1][j] and dp[i][j-1]
             }
         }
     }
