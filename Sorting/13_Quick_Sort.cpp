@@ -37,7 +37,7 @@ void quickSort(int arr[], int l, int h)
     if (l < h)
     {
         int p = hPartition(arr, l, h); // returns a pivot around which partition is done
-        quickSort(arr, l, p - 1);      // Recursievly quickSorting LHS taking h = p - 1
+        quickSort(arr, l, p);          // Recursievly quickSorting LHS taking h = p
         quickSort(arr, p + 1, h);      // Recursievly quickSorting RHS taking l = p + 1
     }
 }
