@@ -11,7 +11,7 @@ The minimum number of steps required to convert string1 to string2 using delete 
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+//  [TC: O(m*n), AS: O(m*n)]
 int lcs(string s1, string s2, int m, int n)
 {
     vector<vector<int>> dp(501, vector<int>(501, -1));
@@ -48,8 +48,8 @@ int minInsertDelOperations(string word1, string word2)
 {
     int m = word1.length(), n = word2.length();
 
-    int l = lcs(word1, word2, m, n);
-    int del = m - l, insert = n - l;
+    int l = lcs(word1, word2, m, n); // Calculating lcs
+    int del = m - l, insert = n - l; // Minimum No of Insert and Delete Operations required
 
     return (del + insert);
 }
