@@ -10,19 +10,23 @@ O/P: 3 (Common Subsequence => A, D, H)
 #include <iostream>
 using namespace std;
 
+// Naive [TC: O(2^n)]
 int lcs(string s1, string s2, int m, int n)
 {
-    if (m == 0 || n == 0)
+    // Base Case
+    if (m == 0 || n == 0) // if any of the string length becomes 0 => return 0
     {
         return 0;
     }
 
-    if (s1[m - 1] == s2[n - 1])
+    // We find lcs by comparing ends of the strings
+    if (s1[m - 1] == s2[n - 1]) // Subsequence found condition
     {
-        return 1 + lcs(s1, s2, m - 1, n - 1);
+        return 1 + lcs(s1, s2, m - 1, n - 1); // Add 1 + decreasing string length from both s1 and s2 and finding lcs recursievly
     }
 
-    return max(lcs(s1, s2, m - 1, n), lcs(s1, s2, m, n - 1));
+    // Now case when we dont find lcs, we decreasing string length from s1 and s2 independently and find their lcs
+    return max(lcs(s1, s2, m - 1, n), lcs(s1, s2, m, n - 1)); // returning max of two recursive function after computing them
 }
 
 int main()
