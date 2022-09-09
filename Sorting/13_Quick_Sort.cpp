@@ -1,7 +1,9 @@
 #include <iostream>
 using namespace std;
 
-// Quick Sort Using Hoarse Partition [TCavg: O(nlogn), AS: O(1)], NOTE: In worst case, TC can go upto O(n*n)
+// Quick Sort Using Hoarse Partition [TCavg: O(nlogn), AS: O(n],
+// NOTE: In worst case, TC can go upto O(n*n)
+// ASworst => O(n),  ASbest => O(logn)
 int hPartition(int arr[], int l, int h)
 {
     int pivot = arr[l]; // First element is taken as pivot in Hoares partition
