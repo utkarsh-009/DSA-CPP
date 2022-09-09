@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// merge function to merge two sorted sub arrays into whole sorted array
-void merge(int arr[], int low, int mid, int high)
+// [TC: O(nlogn), AS: O(n)]
+void merge(int arr[], int low, int mid, int high) // merge function to merge two sorted sub arrays into whole sorted array
 {
     int n1 = mid - low + 1, n2 = high - mid;
     int left[n1], right[n2]; // Creating two arrays left and right
