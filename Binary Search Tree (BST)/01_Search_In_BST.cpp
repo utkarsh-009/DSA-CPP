@@ -18,7 +18,7 @@ struct Node
     }
 };
 
-// Recursive [TC: O(logn),AS: O(logn)]
+// Recursive [TC: O(h),AS: O(h)]
 bool searchRecur(Node *root, int x)
 {
     // Base Case
@@ -43,7 +43,7 @@ bool searchRecur(Node *root, int x)
     }
 }
 
-// Iteratives [TC: O(logn), AS: O(1)]
+// Iteratives [TC: O(h), AS: O(1)]
 bool searchIter(Node *root, int x)
 {
     while (root != NULL) // Base Case
