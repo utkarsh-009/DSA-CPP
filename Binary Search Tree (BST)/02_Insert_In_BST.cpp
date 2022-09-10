@@ -91,6 +91,7 @@ Node *insertIter(Node *root, int x)
     return root;
 }
 
+// Inorder Traversal
 void inorder(Node *root)
 {
     if (root != NULL)
