@@ -19,7 +19,6 @@ Explanation: Total maximum value of item. We can have is 160.00 from the given c
 #include <bits/stdc++.h>
 using namespace std;
 
-// Using Greedy Approach [TC: O(nlogn), AS: O(1)]
 struct Item
 {
     int value;
@@ -31,6 +30,7 @@ struct Item
     }
 };
 
+// Using Greedy Approach [TC: O(nlogn), AS: O(1)]
 static bool myCmp(Item item1, Item item2) // Sorting in decreasing order of ratio (value/weight)
 {
     return (double)item1.value / item1.weight > (double)item2.value / item2.weight;
