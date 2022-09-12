@@ -21,7 +21,6 @@ assuming that a person can only work on a single activity at a given day.
 using namespace std;
 
 // Greedy Approach [TC: O(nlogn), AS: O(1)]
-
 bool myCmp(pair<int, int> a, pair<int, int> b) // Custom comparator sorts the pairs according to finish time in increasing order
 {
     return (a.second < b.second);
