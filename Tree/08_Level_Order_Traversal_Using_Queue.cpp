@@ -7,8 +7,6 @@
   30  6
 
 O/P: 10 5 20 30 6
-
-TC: O(n + n*h), AS: O(n*h)
 */
 
 #include <iostream>
