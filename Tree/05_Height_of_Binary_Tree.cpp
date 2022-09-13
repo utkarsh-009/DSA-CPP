@@ -31,12 +31,13 @@ struct Node
 
 int height(Node *root)
 {
+    // Base Case
     if (root == NULL)
     {
         return 0;
     }
 
-    return max(height(root->left), height(root->right)) + 1;
+    return max(height(root->left), height(root->right)) + 1; // Adding 1 after every recursive call
 }
 
 int main()
