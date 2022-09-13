@@ -28,7 +28,10 @@ struct Node
         right = NULL;
     }
 };
-
+/*
+Intution:
+Recursively moving to left subtree and right subtree, after every recursive call add 1 to max(height(root->left), height(root->right))
+*/
 // [TC: O(n), AS: O(h)]
 int height(Node *root)
 {
