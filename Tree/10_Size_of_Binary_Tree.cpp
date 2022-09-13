@@ -35,7 +35,7 @@ int getSizeRecur(Node *root)
     return getSizeRecur(root->left) + getSizeRecur(root->right) + 1;
 }
 
-// Irerative: Using Level Order Traversal [TC: O(n), AS: O(w)]
+// M2: Irerative Using Level Order Traversal [TC: O(n), AS: O(w)]
 int getSizeIter(Node *root)
 {
     int size = 0;
