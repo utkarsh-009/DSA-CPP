@@ -62,4 +62,6 @@ int main()
     root->right = new Node(36);
     root->right->left = new Node(30);
     root->right->right = new Node(6);
+
+    cout << isCSP(root);
 }
