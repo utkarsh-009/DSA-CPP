@@ -28,6 +28,14 @@ struct Node
     }
 };
 
+/*
+Intution: Using 2 functions:
+Fun1: Finding Height of Tree
+Fun2: Printing Nodes of Tree at K level
+
+Using Fun1 => Find Height of Tree 'h'
+Using Fun2 => Use a loop, to print nodes at each level from k = 1 to k = h
+*/
 int height(Node *root)
 {
     if (root == NULL)
