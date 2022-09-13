@@ -1,5 +1,5 @@
 /*
-Height of Tree
+Height of Tree: Max no of nodes from Root to Leaf
 
   10
  / \
@@ -29,6 +29,7 @@ struct Node
     }
 };
 
+// [TC: O(n), AS: O(h)]
 int height(Node *root)
 {
     // Base Case
@@ -37,7 +38,7 @@ int height(Node *root)
         return 0;
     }
 
-    return max(height(root->left), height(root->right)) + 1; // Adding 1 after every recursive call
+    return max(height(root->left), height(root->right)) + 1; // finding max between left subtree and right subtree, adding 1 after every recursive call
 }
 
 int main()
