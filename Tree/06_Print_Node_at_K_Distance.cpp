@@ -29,22 +29,28 @@ struct Node
         right = NULL;
     }
 };
-
+/*
+Intution:
+Moving to left and right subtree recursiely along with decrementing value of k by 1 in every recursive call.
+When k == 0 => kth level is reached
+*/
+// [TC: O(n), AS: O(h)]
 void printNodesAtLevelK(Node *root, int k)
 {
+    // Base Case
     if (root == NULL)
     {
         return;
     }
 
-    if (k == 0)
+    if (k == 0) // When k == 0, kth level reached
     {
         cout << root->key << " ";
         return;
     }
 
-    printNodesAtLevelK(root->left, k - 1);
-    printNodesAtLevelK(root->right, k - 1);
+    printNodesAtLevelK(root->left, k - 1);  // Moving to left subtree and decrementing k by 1
+    printNodesAtLevelK(root->right, k - 1); // Moving to right subtree and decrementing k by 1
 }
 
 int main()
