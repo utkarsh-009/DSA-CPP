@@ -31,7 +31,7 @@ NOTE:
 2. For all other nodes, prev is going to have previously visited node as reference
 */
 
-// Using Inorder Traversal [TC: ,AS:]
+// Using Inorder Traversal [TC: O(n), AS: O(n)]
 Node *BinTreeToDLL(Node *root) // root is the current node pointer
 {
     if (root == NULL)
