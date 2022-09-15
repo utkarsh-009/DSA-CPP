@@ -60,7 +60,7 @@ Node *BinTreeToDLL(Node *root) // root is the current node pointer
     return head;
 }
 
-void printDLL(Node *head)
+void printDLL(Node *head) // To Print Doubly Linked List
 {
     Node *curr = head;
     while (curr != NULL)
