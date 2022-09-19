@@ -1,6 +1,15 @@
 #include <iostream>
 using namespace std;
 
+/*
+Intution:
+Assigning capacity and Intialising top of stack as -1;
+    push(x): Increment the top and insert arr[top] = x, Edge Case: Overflow, when top == cap - 1
+    pop(): temp = arr[top], decrement the top and return temp, Edge Case: Underflow, when top = -1
+    peek(): return arr[top], Edge Case: Top Does Not Exist, when top = -1
+    isEmpty(): return (top == -1);
+    size(): return top+1;
+*/
 struct MyStack
 {
     int *arr; // Array to store stack
