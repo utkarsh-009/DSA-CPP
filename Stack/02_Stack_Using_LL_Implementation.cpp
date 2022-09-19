@@ -1,6 +1,22 @@
 #include <iostream>
 using namespace std;
 
+/*
+Intution:
+Considering head as top.
+All Operations => O(1)
+    push(x): sz++;
+        Creating a new node temp (Node *temp = new Node(x))
+        linking new node to head (temp->next = head)
+        and updating new node as head i.e. top (head = temp)
+    pop(): sz--;
+        Storing head's data in poppedTop (poppedTop = head->data)
+        Storing head node in temp for handling garbage collection (Node *temp = head;)
+        Popping top from stack by updating head as head->next (head = head->next)
+    peek(): return head->data, Edge Case: Top Does Not Exist, when head = NULL
+    isEmpty(): return (head == NULL);
+    size(): return sz;
+*/
 struct Node
 {
     int data;
