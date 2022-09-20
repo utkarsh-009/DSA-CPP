@@ -60,7 +60,7 @@ void printPrevGreaterEff(int arr[], int n)
     cout << -1 << " ";
     for (int i = 1; i < n; i++)
     {
-        while (!s.empty() && s.top() <= arr[i]) //
+        while (!s.empty() && s.top() <= arr[i]) // We will keep poping from stack until stack is empty or we get a top which is greater than arr[i]
         {
             s.pop();
         }
