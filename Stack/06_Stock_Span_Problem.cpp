@@ -70,7 +70,7 @@ vector<int> calculateSpanEff(int price[], int n)
 
     for (int i = 1; i < n; i++)
     {
-        while (!s.empty() && price[s.top()] <= price[i]) // We will pop from stack if top of stack (day index) is having price less than the ith day price
+        while (!s.empty() && price[s.top()] <= price[i]) // We will keep poping from stack if top of stack (day index) is having price less than the ith day price
         {
             s.pop();
         }
