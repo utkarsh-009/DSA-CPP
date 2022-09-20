@@ -5,7 +5,7 @@ Implement Two stacks in a single array.
 #include <bits/stdc++.h>
 using namespace std;
 
-// SPACE EFFICIENT [TC: ,AS:]
+// SPACE EFFICIENT [TC: O(n), AS: O(n)] => all operations O(1)
 /*
 Keep one stack's top in one end and other stack's end at other end: top1 = -1 and top2 = cap
 */
