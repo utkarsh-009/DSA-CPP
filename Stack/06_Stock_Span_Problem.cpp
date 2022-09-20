@@ -64,10 +64,11 @@ vector<int> calculateSpanEff(int price[], int n)
 
     stack<int> s; // Stack Will Store Index (Day Number from 0 to N-1)
 
-    // Initally pushing day 0 into the stack
+    // Initally pushing day 0 into the stack and it's span will be 1
     s.push(0);
+    span[0] = 1;
 
-    for (int i = 0; i < n; i++)
+    for (int i = 1; i < n; i++)
     {
         while (!s.empty() && price[s.top()] <= price[i]) // We will pop from stack if top of stack (day index) is having price less than the ith day price
         {
