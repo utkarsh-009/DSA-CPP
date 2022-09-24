@@ -28,10 +28,33 @@ struct Node
     }
 };
 
-//  [TC: ,AS:]
+// Recursive [TC: O(n), AS: O(h)] // Aux Space is calculated considering Recursion Call Stack, AS would be O(1)
+/* Intution: Calling Mirror fnc recursievly for left and right subtree and then swapping its left and right children
+resulting in swap of left and right subtree.
+*/
+void mirrorRecur(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    else
+    {
+        struct Node *temp;
 
-// Iterative [TC: ,AS: ]
-void mirror(Node *root)
+        mirrorRecur(root->left);  // mirroring left subtree recursievly
+        mirrorRecur(root->right); // mirroring right subtree recursievly
+
+        // Swapping pointers of left and right children
+        temp = root->left;
+        root->left = root->right;
+        root->right = temp;
+    }
+}
+
+// Iterative [TC: O(n), AS: O(w)]
+// Intution : While doing level order traversal, swap left and right children of every node
+void mirrorIter(Node *root)
 {
     if (root == NULL)
     {
@@ -46,7 +69,8 @@ void mirror(Node *root)
         Node *curr = q.front();
         q.pop();
 
-        swap(curr->left, curr->right);
+        swap(curr->left, curr->right); // swap left child with right child
+
         if (curr->left != NULL)
         {
             q.push(curr->left);
@@ -81,7 +105,7 @@ int main()
     inOrder(root);
 
     /* Convert tree to its mirror */
-    mirror(root);
+    mirrorRecur(root);
 
     /* Print inorder traversal of the mirror tree */
     cout << "\n Inorder traversal of the mirror tree is \n";
