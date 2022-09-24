@@ -8,6 +8,8 @@ O/P:
 5  20
    / \
   30  6
+
+inorder = {5,10,30,20,6}
 */
 
 #include <bits/stdc++.h>
@@ -26,7 +28,7 @@ struct Node
     }
 };
 
-//  [TC: O(n*n), ]
+//  [TC: O(n*n), AS: O(n)]
 /*
 Algorithm:
 NOTE: First Element of Preorder Traversal is Root of the Tree.
@@ -42,7 +44,7 @@ NOTE: First Element of Preorder Traversal is Root of the Tree.
 */
 int search(int inorder[], int inorder_start, int inorder_end, int curr) // To search the curr element in inorder traversal array and return its index in variable inIndex
 {
-    for (int i = start; i <= end; i++)
+    for (int i = inorder_start; i <= inorder_end; i++)
     {
         if (inorder[i] == curr)
         {
@@ -53,7 +55,7 @@ int search(int inorder[], int inorder_start, int inorder_end, int curr) // To se
     return -1; // When curr not found, This case is not possible
 }
 
-Node *buildTree(int preorder[], int inorder[], int inorder_start, int inorder_end) //
+Node *buildTree(int preorder[], int inorder[], int inorder_start, int inorder_end)
 {
     static int preIndex = 0;
 
@@ -66,7 +68,7 @@ Node *buildTree(int preorder[], int inorder[], int inorder_start, int inorder_en
     preIndex++;
     Node *root = new Node(curr);
 
-    if (inorder_start == inorder_end) // Base Case: Inorder Traversal has only one element   
+    if (inorder_start == inorder_end) // Base Case: Inorder Traversal has only one element
     {
         return root;
     }
@@ -75,10 +77,25 @@ Node *buildTree(int preorder[], int inorder[], int inorder_start, int inorder_en
     root->left = buildTree(preorder, inorder, inorder_start, inIndex - 1);
     root->right = buildTree(preorder, inorder, inIndex + 1, inorder_end);
 
+    return root;
 }
 
-//  [TC: ,AS: ]
+void printInorder(Node *node)
+{
+    if (node != NULL)
+    {
+        printInorder(node->left);
+        cout << node->key << " ";
+        printInorder(node->right);
+    }
+}
 
 int main()
 {
+    int in[] = {5, 10, 30, 20, 6};
+    int pre[] = {10, 5, 20, 30, 6};
+
+    Node *root = buildTree(pre, in, 0, 4);
+
+    printInorder(root);
 }
