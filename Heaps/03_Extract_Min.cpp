@@ -6,11 +6,6 @@ Extract Minimum: Returns and removes minimum element from heap and makes a new h
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
-
-#include <bits/stdc++.h>
-using namespace std;
-
 class MinHeap
 {
     int *arr;
