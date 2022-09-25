@@ -59,7 +59,7 @@ public:
     Intution: We pass index of node to minHeapify function, which maybe violating min heap property
     This function fixes the subtree under the given node by making sure that root of the subtree has minimum value
     */
-    // Recursive [TC: O(logn), AS: O(h)] NOTE: Iterative Soln takes AS: O(1)
+    // Recursive [TC: O(n), AS: O(h)] NOTE: Iterative Soln takes AS: O(1)
     void minHeapifyRecur(int i) // Parent Index given as parameter
     {
         // Finding the indexes of left and right child
