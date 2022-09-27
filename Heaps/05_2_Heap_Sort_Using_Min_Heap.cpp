@@ -6,7 +6,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// minHeap: [TC: O(logn), AS: O(h)]
+// minHeap [TC: O(logn), AS: O(h)]
 void minHeapify(int arr[], int n, int i)
 {
     int lIdx = 2 * i + 1, rIdx = 2 * i + 2;
@@ -39,9 +39,9 @@ void buildMinHeap(int arr[], int n)
 }
 
 // Descending Order Sort [TC: O(nlogn), AS: O(h)]
-void heapSort(int arr[], int n)
+void heapSortDesc(int arr[], int n)
 {
-    buildMinHeap(arr, n);
+    buildMinHeap(arr, n); // To build heap from random array
     for (int i = n - 1; i >= 0; i--)
     {
         swap(arr[0], arr[i]);  // Swapping the minimum element to last pos
@@ -53,7 +53,7 @@ int main()
 {
     int arr[] = {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17};
     int n = sizeof(arr) / sizeof(arr[0]);
-    heapSort(arr, n);
+    heapSortDesc(arr, n);
 
     for (int x : arr)
     {
