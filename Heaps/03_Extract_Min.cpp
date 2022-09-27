@@ -63,7 +63,7 @@ public:
         int smallest = i;
 
         // Checking if left child index actually exist (lIdx < size) and then checking if root is smaller than left child
-        if (lIdx < size && arr[lIdx] < arr[i])
+        if (lIdx < size && arr[lIdx] < arr[smallest])
         {
             smallest = lIdx; // Update the smallest index
         }
