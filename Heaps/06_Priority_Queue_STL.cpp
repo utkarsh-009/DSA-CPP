@@ -6,6 +6,9 @@
 
     pop(): O(logn)
     push(): O(logn)
+
+    NOTE: IN C++ => the default priority queue that we create is always a Max Heap => Maximum Element At Top
+          IN JAVA => the default priority queue that we create is always a Min Heap => Minimum Element At Top
 */
 
 #include <iostream>
