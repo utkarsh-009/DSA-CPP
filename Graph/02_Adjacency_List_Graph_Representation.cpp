@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Vector of Array is used in Adjacency List
+// Vector of Array (Array of Vector Datatype) is used in Adjacency List
 void addEdge(vector<int> adj[], int u, int v)
 {
     adj[u].push_back(v);
