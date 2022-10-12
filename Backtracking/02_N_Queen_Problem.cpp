@@ -15,7 +15,10 @@ The N Queen is the problem of placing N chess queens on an N×N chessboard so th
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+/*
+Time Complexity: O(N!)
+Auxiliary Space: O(N*N)
+*/
 bool isSafe(int row, int col, int N, vector<vector<int>> board)
 {
     for (int i = 0; i < col; i++) // Checking each cell of row, if there already exist Queen => return false;
