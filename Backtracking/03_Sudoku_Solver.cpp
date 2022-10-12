@@ -25,6 +25,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+ Complexity Analysis:
+
+Time complexity: O(9^(n*n)). For every unassigned index, there are 9 possible options so the time complexity is O(9^(n*n)).
+The time complexity remains the same but checking if a number is safe to use is much faster, O(1).
+Space Complexity: O(n*n). To store the output array a matrix is needed, and 3 extra arrays of size n are needed for the bitmasks.
+*/
+
 bool isSafe(vector<vector<int>> &grid, int row, int col, int num, int N)
 {
     // To check for col in grid, if number is already placed => return false
