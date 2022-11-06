@@ -12,7 +12,7 @@ O/P: 0 1 1 2
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+//  [TC: O(V+E)]
 void BFS(vector<int> adj[], int V, int source, int dist[])
 {
     vector<bool> visited(V, false); // To keep track of visited nodes
@@ -22,6 +22,7 @@ void BFS(vector<int> adj[], int V, int source, int dist[])
     visited[source] = true;
     q.push(source);
 
+    // Using BFS and updating dist[]
     while (q.empty() == false)
     {
         int u = q.front();
