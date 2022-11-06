@@ -1,6 +1,6 @@
 /*
 Detection of a Cycle in an Undirected Graph.
-Cycle Detection Test =>
+Cycle Detection Test for Undirected Graph =>
     1.) Adjacent of a node is visited
     2.) The adjacent node is not parent of current node
 
@@ -38,7 +38,8 @@ bool DFSRec(vector<int> adj[], int source, vector<bool> visited, int parent)
     return false; // No cycle detected
 }
 
-bool DFS(vector<int> adj[], int V)
+// Using DFS
+bool DFSDetectCycle(vector<int> adj[], int V)
 {
     vector<bool> visited(V, false);
 
@@ -73,7 +74,7 @@ int main()
     addEdge(adj, 1, 3);
     addEdge(adj, 2, 3);
 
-    if (DFS(adj, V))
+    if (DFSDetectCycle(adj, V))
         cout << "Cycle found";
     else
         cout << "No cycle found";
