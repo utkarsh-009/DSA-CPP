@@ -5,10 +5,10 @@ Cycle Detection Test for Undirected Graph =>
     2.) The adjacent node is not parent of current node
 
 I/P:
-    0->1,
-    1->2, 1->3,
-    2->3, 2->4,
-    4->5
+    0<->1,
+    1<->2, 1<->3,
+    2<->3, 2<->4,
+    4<->5
 O/P: Cycle Found (1->2->3->1)
 */
 
