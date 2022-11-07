@@ -34,11 +34,11 @@ void topologicalSort(vector<int> adj[], int V)
 
     // Adding all vertices having 0 indegree
     queue<int> q;
-    for (int i = 0; i < V; i++)
+    for (int u = 0; u < V; u++)
     {
-        if (indegree[i] == 0)
+        if (indegree[u] == 0)
         {
-            q.push(i);
+            q.push(u);
         }
     }
 
