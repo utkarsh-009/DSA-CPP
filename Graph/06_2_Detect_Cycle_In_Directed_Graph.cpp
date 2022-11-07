@@ -6,32 +6,32 @@ Cycle Detection Test in Directed Graph =>
 
 I/P:
     0->1,
-    1->2, 1->3,
-    2->3, 2->4,
-    4->5
-O/P: Cycle Found (1->2->3->1)
+    2->1, 2->3,
+    3->4,
+    4->5,
+    5->3
+O/P: Cycle Found (3->4->5->3)
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
-
+// Maintaining a recursion call stack for checking cycle [TC: O(V+E)]
 bool DFSRec(vector<int> adj[], int source, vector<bool> visited, vector<bool> recStack)
 {
     visited[source] = true;
     recStack[source] = true; // Maintaining track of recursion stack
 
-    for (int v : adj[s])
+    for (int u : adj[source])
     {
-        if (visited[v] == false)
+        if (visited[u] == false)
         {
-            if (DFSRec(adj, source, visited, recStack) == true)
+            if (DFSRec(adj, u, visited, recStack) == true) // Back Edge found
             {
                 return true;
             }
         }
-        else if (recStack[u] == true)
+        else if (recStack[u] == true) // Descendant calling to one of the ancestor in recursion stack
         {
             return true;
         }
@@ -62,6 +62,26 @@ bool DFS(vector<int> adj[], int V)
     return false;
 }
 
+void addEdge(vector<int> adj[], int u, int v)
+{
+    adj[u].push_back(v);
+}
+
 int main()
 {
+    int V = 6;
+    vector<int> adj[V];
+    addEdge(adj, 0, 1);
+    addEdge(adj, 2, 1);
+    addEdge(adj, 2, 3);
+    addEdge(adj, 3, 4);
+    addEdge(adj, 4, 5);
+    addEdge(adj, 5, 3);
+
+    if (DFS(adj, V) == true)
+        cout << "Cycle found";
+    else
+        cout << "No cycle found";
+
+    return 0;
 }
