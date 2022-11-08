@@ -14,7 +14,6 @@
     src = 1
     O/P:dist[] = {4,0,1}
 */
-
 #include <bits/stdc++.h>
 using namespace std;
 #define V 4
