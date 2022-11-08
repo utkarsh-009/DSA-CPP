@@ -19,7 +19,7 @@ using namespace std;
 #define V 4
 
 /*
-Dijkstra’s Algorithm: To Find Shortest Path from the Source to ll Vertices
+Dijkstra’s Algorithm: To Find Shortest Path from the Source to all Vertices
 - Create a set finalised set 'fin', that keeps track of vertices included in the shortest-path tree,
   i.e., whose minimum distance from the source is calculated and finalized. Initially, this set is empty.
 - Assign a distance value to all vertices in the input graph. Initialize all distance values as INFINITE.
