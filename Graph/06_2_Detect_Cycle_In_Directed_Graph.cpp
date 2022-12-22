@@ -26,7 +26,8 @@ bool DFSRec(vector<int> adj[], int source, vector<bool> visited, vector<bool> re
     {
         if (visited[u] == false)
         {
-            if (DFSRec(adj, u, visited, recStack) == true) // Back Edge found
+            // recursive call for visiting adjacent of u which returns true if Back Edge found
+            if (DFSRec(adj, u, visited, recStack) == true)
             {
                 return true;
             }
