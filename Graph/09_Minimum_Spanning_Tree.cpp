@@ -1,6 +1,6 @@
 /*
-- The Spanning Tree is a tree which does no have any cycle and it should be connecting all the vertices. If V edges => (V-1)
-- The cost of the Spanning Tree is the sum of the weights of all the edges in the tree is known as Minimum Spanning Tree.
+- The Spanning Tree is a tree which does no have any cycle and it should be connecting all the vertices. If V edges => (V-1) edges
+- The cost of the Minimum Spanning Tree is the minimum sum of the weights of all the edges in the tree.
 
     I/P:
     graph[][] =
