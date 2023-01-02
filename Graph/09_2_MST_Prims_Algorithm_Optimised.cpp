@@ -12,7 +12,7 @@ maximum number of edges can go upto V*(V-1)/2 => V = O(E)
 #include <bits/stdc++.h>
 using namespace std;
 
-// Prims Optimised Algorithm [TC: O(ElogV)]
+// Prims Algorithm Optimised [TC: O(ElogV)]
 void primsMSTOptimised(vector<pair<int, int>> adj[], int V)
 {
     vector<int> key(V, INT_MAX);
@@ -67,7 +67,7 @@ void primsMSTOptimised(vector<pair<int, int>> adj[], int V)
     cout << "\nCost of MST Using Prims Algorithm is: " << res;
 }
 
-// Adding edge with given weight
+// Adding edges with given weight
 void addEdge(vector<pair<int, int>> adj[], int u, int v, int w)
 {
     adj[u].push_back({v, w});
