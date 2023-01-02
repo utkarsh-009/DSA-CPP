@@ -31,11 +31,6 @@ Prim's Algorithm: To find MST.
   If a value mstSet[v] is true, then vertex v is included in MST, otherwise not.
 - Array key[] is used to store key values of all vertices. Another array parent[] to store indexes of parent nodes in MST.
 - The parent array is the output array, which is used to show the constructed MST.
-- Using Priority Queue and Adjacency List Representation,
-    The time complexity of algorithm becomes O(VlogV + (V+E)logV) => O((V+E)logV)
-NOTE: In connected graph, the minimum number of edges are atleast (V-1) and
-maximum number of edges can go upto V*(V-1)/2 => V = O(E)
-
 */
 
 // Prim's Algorithm [TC: O(V*V)]
