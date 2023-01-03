@@ -52,21 +52,24 @@ vector<int> djikstra(int graph[V][V], int src)
     for (int count = 0; count < V - 1; count++)
     {
         int u = -1;
+
+        // Picking MINIMUM DISTANCE AND NOT FINALISED VERTEX
         for (int i = 0; i < V; i++)
         {
-            // Updating u when, ith vertex is not finalised and either u value is -1 or dist[i] < dist[u]
-            if (!fin[i] && (u == -1 || dist[i] < dist[u]))
+            if (!fin[i] && (u == -1 || dist[i] < dist[u])) // Updating u when, ith vertex is not finalised and either u value is -1 or dist[i] < dist[u]
             {
                 u = i;
             }
         }
 
         fin[u] = true; // vertex finalised
+
         for (int v = 0; v < V; v++)
         {
-            // Relaxation Operation
+            // if vertex is not finalised and its weight is not zero (weight = 0 => edge does not exist)
             if (graph[u][v] != 0 && fin[v] == false)
             {
+                // Relaxation Operation
                 dist[v] = min(dist[v], dist[u] + graph[u][v]);
             }
         }
