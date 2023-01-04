@@ -12,22 +12,20 @@ using namespace std;
 //  [TC: O(n), AS: O(1)]
 int maxNormalSubarraySum(int arr[], int n)
 {
-    int maxSS = 0, sum = 0;
+
+    int max_sum = INT_MIN, sum = 0;
 
     for (int i = 0; i < n; i++)
     {
-        if (sum + arr[i] > 0)
+        sum += arr[i];
+        max_sum = max(max_sum, sum);
+        if (sum < 0)
         {
-            sum += arr[i];
+            sum = 0;
         }
-        else
-        {
-            sum = 0; // Finding new subarray sums
-        }
-        maxSS = max(maxSS, sum); // Updating the maximum of current maximum subarray sum
     }
 
-    return maxSS;
+    return max_sum;
 }
 
 int maxSubarraySum(int arr[], int n)
