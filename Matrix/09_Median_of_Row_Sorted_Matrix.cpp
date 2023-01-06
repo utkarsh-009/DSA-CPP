@@ -21,53 +21,64 @@ double matMedNaive(int mat[][MAX], int R, int C)
     return ((R * C % 2 != 0) ? v[medPos] : (double)(v[medPos] + v[medPos - 1]) / 2); // if case when total no of elements are even => v[medPos] and v[medPos - 1]
 }
 
-// Efficient Using Binary Search [TC: O(R*log(max-min)*logC)]
-int matMedEff(int mat[][MAX], int R, int C)
+// Efficient Binary Search [ TC: O(R*log(max-min)*log(C)), AS: O(1) ]
+// Intution: For a number to be median, there should be exactly (n/2) numbers which are less than this number
+
+int upperBound(int matrix[][MAX], int R, int C, int mid) // To find number of elements less than given number
 {
-    // Finding min and max element in matrix
-    int min = mat[0][0], max = mat[0][C - 1];
+    int l = 0, h = C - 1;
+    while (l <= h)
+    {
+        int m = (l + h) / 2;
+        if (matrix[R][m] <= mid)
+        {
+            l = m + 1;
+        }
+        else
+        {
+            h = m - 1;
+        }
+    }
+
+    return l;
+}
+
+int matMedEff(int matrix[][MAX], int R, int C)
+{
+    // finding high and low i.e. minimum and maximum element in matrix
+    int low = INT_MAX, high = INT_MIN;
     for (int i = 0; i < R; i++)
     {
-        if (min < mat[i][0])
-        {
-            min = mat[i][0];
-        }
-        if (max > mat[i][C - 1])
-        {
-            max = mat[i][C - 1];
-        }
+        low = min(matrix[i][0], low);
+        high = max(matrix[i][C - 1], high);
     }
 
-    int medPos = (R * C + 1) / 2; // Position of median will be in middile of all elements => (Total no of elements)/2
+    // For a number to be median, there should be exactly (n/2) numbers which are less than this number
+    int desired = (R * C + 1) / 2;
 
-    /*
-    // Binary Search
-        For a number to be median, there should be exactly (n/2) numbers which are less than this number
-        => mid : Candidate for median
-        => midPos : No of elements smaller than mid
-        => medPos : The actual no of elements that should be less than median
-    */
-
-    while (min < max)
+    while (low <= high)
     {
-        int mid = (min + max) / 2; // Candidate for median
-        int midPos = 0;
+        int mid = (low + high) / 2;
+        int nums_less_than_mid = 0;
 
-        // Finding count of elements smaller than mid
+        // counting total number of elements that are less than mid
         for (int i = 0; i < R; i++)
         {
-            midPos += upper_bound(mat[i], mat[i] + C, mid) - mat[i];
+            nums_less_than_mid += upperBound(matrix, i, C, mid);
         }
-        if (midPos < medPos) // The candidate is smaller than median
+
+        // if elments less than mid are less than desired => low = mid + 1
+        if (nums_less_than_mid < desired)
         {
-            min = mid + 1;
+            low = mid + 1;
         }
-        else // candidate is equal to or greater than median
+        else
         {
-            max = mid;
+            high = mid - 1;
         }
     }
-    return min; // min stores median of matrix
+
+    return low;
 }
 
 int main()
@@ -77,40 +88,3 @@ int main()
     cout << "Median is " << matMedNaive(m, 3, 5) << endl;
     cout << "Median is " << matMedEff(m, 3, 5) << endl;
 }
-
-/*
-I/P: 5 10 20 30 40
-     1  2  3  4  6
-     11 13 15 17 19
-    (1,2,3,4,5,6,10,*11*,13,15,17,19,20,30,40)
-O/P: 11
-
-Dry Run:
-medPos = (3*5 + 1)/2 = (16)/2 = 8
-
-min= 1, max = 40
-mid = 20
-midPos = 3 + 5 + 5 = 13 (medPos < midPos) => max = mid
-
-min = 1, max = 20
-mid = 10
-midPos = 2 + 5 + 0  = 7 (medPos > midPos) => min = mid + 1
-
-mid = 11, max = 20
-mid = 15
-midPos = 2 + 5 + 3 = 10 (medPos < midPos) => max = mid
-
-min = 11, max = 15
-mid = 13
-midPos = 2 + 5 + 2 = 9 (medPos < midPos) => max = mid
-
-min = 11, max = 13
-mid = 12
-midPos = 2 + 5 + 1 = 8 (medPos = midPos) but (min != max) and 12 not present in matrix
-
-min = 11, max = 12
-mid = 11
-midPos = 2 + 5 + 1 = 8 (medPos = midPos)
-
-min = 11 and max = 11
-*/
