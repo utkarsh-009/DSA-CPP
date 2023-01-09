@@ -12,7 +12,7 @@ Preorder Traversal: 10 5 20 30 6
 TC: O(n), AS: O(h)
 */
 
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 
 struct Node
@@ -29,13 +29,46 @@ struct Node
     }
 };
 
-void preorderTrav(Node *root)
+// Recursive
+void preorderRecur(Node *root)
 {
     if (root != NULL)
     {
         cout << root->key << " ";
-        preorderTrav(root->left);
-        preorderTrav(root->right);
+        preorderRecur(root->left);
+        preorderRecur(root->right);
+    }
+}
+
+// Iterative
+void preOrderIter(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+
+    stack<Node *> st;
+    st.push(root);
+
+    while (st.empty() == false)
+    {
+        Node *curr = st.top();
+        st.pop();
+
+        cout << curr->key << " ";
+
+        // NOTE: stack works using LIFO (Last In First Out) principle.
+        // Hence, we have to first push right node into stack before left node so as to get left node at top.
+        if (curr->right != NULL)
+        {
+            st.push(curr->right);
+        }
+
+        if (curr->left != NULL)
+        {
+            st.push(curr->left);
+        }
     }
 }
 
@@ -47,5 +80,7 @@ int main()
     root->right->left = new Node(30);
     root->right->right = new Node(6);
 
-    preorderTrav(root);
+    preorderRecur(root);
+    cout << endl;
+    preOrderIter(root);
 }
