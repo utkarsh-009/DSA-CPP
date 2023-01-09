@@ -41,6 +41,7 @@ cut2 = 2; l2 = 1, r2 = 2 => {[2,3],[6,15]}
 
 float median(int arr1[], int arr2[], int m, int n)
 {
+    // m should be less than n
     if (m > n)
         return median(arr2, arr1, n, m); // ensuring that binary search happens on minimum size array
 
