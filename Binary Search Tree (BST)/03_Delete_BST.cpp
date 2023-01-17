@@ -1,9 +1,8 @@
 /*
-    I/P:
-    O/P:
-
-    I/P:
-    O/P:
+Three types of deletetion:
+C1: When node to be deleted is leaf node
+C2: When node to be deleted has one node empty and one node non-empty
+C3: When node to be deleted has both nodes non-empty (Replace it with either lowest or greater value)
 */
 
 #include <bits/stdc++.h>
@@ -51,8 +50,10 @@ Node *delNode(Node *root, int x)
         root->right = delNode(root->right, x);
     }
 
+    // Deleting the node
     else
     {
+        // Handles both C1 and C2
         if (root->left == NULL) // left child empty
         {
             Node *temp = root->right; // stores right of parent
@@ -65,6 +66,7 @@ Node *delNode(Node *root, int x)
             delete root;             // delete parent
             return temp;             // return temp to parent caller
         }
+        // C3 deletion
         else
         {
             Node *succ = getSuccessor(root);               // Finding closest succesor
