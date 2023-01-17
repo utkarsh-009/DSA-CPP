@@ -69,9 +69,11 @@ Node *delNode(Node *root, int x)
         // C3 deletion
         else
         {
-            Node *succ = getSuccessor(root);               // Finding closest succesor
-            root->key = succ->key;                         // Copy succ key to root key
-            root->right = delNode(root->right, succ->key); // And recursively delete succ node
+            Node *succ = getSuccessor(root); // Finding closest succesor
+            root->key = succ->key;           // Copy succ key to root key
+
+            // recursively calling delete function in right subtree to delete the succesor node value
+            root->right = delNode(root->right, succ->key);
         }
     }
 
