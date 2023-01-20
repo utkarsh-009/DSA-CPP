@@ -18,7 +18,7 @@ struct Node
     }
 };
 
-//M1: [TC: O(N), AS: O(N)]
+// M1: [TC: O(N), AS: O(N)]
 void verticalTraversal(Node *root)
 {
     map<int, vector<int>> mp;

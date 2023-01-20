@@ -1,7 +1,7 @@
 /*
-Given a binary search tree, find bottom view of BST.
+Given a binary search tree, find top view
 Intution: Using Queue of pair<Node*, int> we store node and its horizontal distance.
-We will update map of horizontal distance everytime we recieve new value for it.
+we update map of horizontal distance only once when horizontal distance value is not present in map
 */
 #include <bits/stdc++.h>
 using namespace std;
