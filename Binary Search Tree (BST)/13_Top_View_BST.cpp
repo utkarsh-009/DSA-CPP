@@ -1,50 +1,41 @@
 /*
-
+Given a binary search tree, find bottom view of BST.
+Intution: Using Queue of pair<Node*, int> we store node and its horizontal distance.
+We will update map of horizontal distance everytime we recieve new value for it.
 */
-
 #include <bits/stdc++.h>
 using namespace std;
 
 struct Node
 {
     int key;
-    Node *left, *right;
-    Node(int x)
+    struct Node *left;
+    struct Node *right;
+    Node(int k)
     {
-        key = x;
+        key = k;
         left = right = NULL;
     }
 };
 
-// M1:Using Map and Level Order Traversal
-void topView(Node *root)
+// M1: [TC: O(N), AS: O(N)]
+void bottomView(Node *root)
 {
     map<int, int> mp;
     queue<pair<Node *, int>> q;
     q.push({root, 0});
-
     while (q.empty() == false)
     {
-        Node *node = q.front().first;
-        int hd = q.front().second;
+        auto p = q.front();
+        Node *curr = p.first;
+        int hd = p.second;
+        mp[hd] = (curr->key);
         q.pop();
-
-        if (mp.find(hd) == mp.end())
-        {
-            mp[hd] = node->key;
-        }
-
-        if (node->left != NULL)
-        {
-            q.push({node->left, hd - 1});
-        }
-
-        if (node->right != NULL)
-        {
-            q.push({node->right, hd + 1});
-        }
+        if (curr->left != NULL)
+            q.push({curr->left, hd - 1});
+        if (curr->right != NULL)
+            q.push({curr->right, hd + 1});
     }
-
     for (auto x : mp)
     {
         cout << x.second << " ";
@@ -60,7 +51,7 @@ int main()
     root->left->left = new Node(40);
     root->left->right = new Node(50);
 
-    topView(root);
+    bottomView(root);
 
     return 0;
 }
