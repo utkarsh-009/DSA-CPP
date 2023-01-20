@@ -2,6 +2,7 @@
 Given a binary search tree, find vertical traversal
 Intution: Using Queue of pair<Node*, int> we store node and its horizontal distance.
 This helps us in finding vertical traversal with node from top to bottom.
+All the node values are stored in vector using map<int, vector<int>>
 */
 
 #include <bits/stdc++.h>
