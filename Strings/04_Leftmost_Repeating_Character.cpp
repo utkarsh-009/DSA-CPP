@@ -7,7 +7,7 @@ The leftmost repeating character is the character which is the first character t
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+// Efficient [TC: O(n), AS: O(n)]
 int leftmostRepeating(string &s)
 {
     vector<bool> visi(256, false);
@@ -29,7 +29,7 @@ int leftmostRepeating(string &s)
 
 int main()
 {
-    string str = "geeksforgeeks";
+    string str = "tgeeksforgeeks";
     cout << "Index of leftmost repeating character:" << endl;
     cout << leftmostRepeating(str) << endl;
 
