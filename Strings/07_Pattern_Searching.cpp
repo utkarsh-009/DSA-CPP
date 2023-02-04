@@ -1,12 +1,12 @@
 /*
-    I/P: "ABCDASDABCD"
-    O/P:  0 7
+    I/P: "ABCDABCD" "ABCD"
+    O/P:  0 4
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: O(n), AS: O(1)]
+// Naive [TC: O(n), AS: O(1)]
 void patSearch(string txt, string pat)
 {
     int n = txt.length();
