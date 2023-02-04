@@ -6,7 +6,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Naive [TC: O(n), AS: O(1)]
+// Naive [TC: O(n*m), AS: O(1)]
 void patSearch(string txt, string pat)
 {
     int n = txt.length();
