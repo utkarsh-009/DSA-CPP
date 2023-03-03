@@ -63,15 +63,16 @@ void fillLPSEfficient(string str, int *lps)
     {
         /*
         KMP Algorithm:
-        Case1: if len = lps[i-1] and str[i] == str[len] => lps[i] = len+1;
-        Case2: if str[i] != str[len] :
-                a.) if len == 0 => lps[i] = 0
-                b.) Else, we recursively apply
-                     len = lps[len-1] and compare str[i] with str[len]
+        Case1 (When characters match): if len = lps[i-1] and str[i] == str[len] => lps[i] = len+1; 
+        Case2 (When characters do not match): 
+                if str[i] != str[len] :
+                    a.) if len == 0 => lps[i] = 0
+                    b.) Else, we recursively apply
+                        len = lps[len-1] and compare str[i] with str[len]
         */
 
         // Case1
-        if (str[i] == str[len])
+        if (len == lps[i - 1] && str[i] == str[len])
         {
             lps[i] = len + 1;
             len++;
