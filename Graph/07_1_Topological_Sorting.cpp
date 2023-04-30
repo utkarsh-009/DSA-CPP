@@ -1,7 +1,6 @@
 /*
 Topological Sorting Using Kahn's BFS Based Algortihm
-- The topological sort algorithm takes a directed graph and
-  returns an array of the nodes where each node appears before all the nodes it points to.
+- Topological sort is a graph traversal in which each node v is visited only after all its dependencies are visited.
 - We will store indegree of every vertex.
 - Then add all 0 indegree vertices to the q.
 - Now for every adjacent v of u,
