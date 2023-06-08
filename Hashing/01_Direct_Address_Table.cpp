@@ -6,21 +6,24 @@ We have to implement Search, Insert, Delete Operation is O(1)
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+//  [TC: O(1) for all operations, AS: O(size)]
 struct DirectAddressTable
 {
     int table[1000] = {0};
 
+    // O(1)
     void insert(int i)
     {
         table[i] = 1;
     }
 
+    // O(1)
     void del(int i)
     {
         table[i] = 0;
     }
 
+    // O(1)
     int search(int i)
     {
         return table[i];
