@@ -1,19 +1,18 @@
 /*
-    I/P: 231*+9-
-    O/P: -4
+    I/P:
+    O/P:
 
-    I/P: 123+*8-
-    O/P: -3
+    I/P:
+    O/P:
 */
 
 #include <bits/stdc++.h>
 using namespace std;
-
 //  [TC: O(n), AS: O(n)]
 /*
-1.) Create Empty Stack
+1.) Create Empty Stack and an empty string output.
 2.) Traverse through all the elements of given string. For each char x,
-    - If x is operand, push it to output
+    - If x is operand, push it to stack
     - Else if 'x' is operator:
         -> int_val1 = st.top(); st.pop();
         -> int_val2 = st.top(); st.pop();
