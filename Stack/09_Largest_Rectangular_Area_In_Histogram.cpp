@@ -64,10 +64,60 @@ long long getMaxArea(long long arr[], int n)
     return ans;
 }
 
+// Using Single Stack [TC: O(n), AS: O(n)]
+/*
+Idea to directly get next smaller and prev smaller will be:
+- The element due to which the top of stack will be popped => Next Smaller
+- The element which is at top of stack after popping the current top => Previous Smaller
+NOTE:
+1.) if stack becomes empty during any iteration => previous smaller is -1
+2.) if stack has elements after completing one iteration => next smaller is n
+*/
+long long getMaxAreaEff(long long arr[], int n)
+{
+    stack<long long> st;
+    long long ans = 0;
+
+    for (int i = 0; i < n; i++)
+    {
+        while (!st.empty() && arr[st.top()] >= arr[i])
+        {
+            int top = st.top();
+            st.pop();
+
+            // The element which is at top of stack after popping the current top => Previous Smaller
+            long long prevSmaller = ((st.empty()) ? -1 : st.top());
+            // The element due to which the top of stack will be popped => Next Smaller
+            long long nextSmaller = i;
+
+            long long currArea = arr[top] * (nextSmaller - prevSmaller - 1);
+            ans = max(ans, currArea);
+        }
+
+        st.push(i);
+    }
+
+    while (!st.empty())
+    {
+        int top = st.top();
+        st.pop();
+
+        // The element which is at top of stack after popping the current top => Previous Smaller
+        long long prevSmaller = ((st.empty()) ? -1 : st.top());
+        // The element due to which the top of stack will be popped => Next Smaller
+        long long nextSmaller = n;
+
+        long long currArea = arr[top] * (nextSmaller - prevSmaller - 1);
+        ans = max(ans, currArea);
+    }
+
+    return ans;
+}
+
 int main()
 {
     long long arr[] = {6, 2, 5, 4, 1, 5, 6};
     int n = 7;
-    cout << "Maximum Area: " << getMaxArea(arr, n);
+    cout << "Maximum Area: " << getMaxAreaEff(arr, n);
     return 0;
 }

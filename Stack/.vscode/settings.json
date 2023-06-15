@@ -13,6 +13,7 @@
         "xiosbase": "cpp",
         "xstring": "cpp",
         "xlocale": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "limits": "cpp"
     }
 }
