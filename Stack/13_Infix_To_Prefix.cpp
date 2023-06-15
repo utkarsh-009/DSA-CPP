@@ -12,7 +12,8 @@ using namespace std;
 /*
 1.) Create Empty Stack and an empty string output.
 2.) Traverse through all the elements of given string. For each char x,
-    - If x is operand, push it to stack
+    - If x is operand, push it to output
+    - 
     - Else if 'x' is operator:
         -> int_val1 = st.top(); st.pop();
         -> int_val2 = st.top(); st.pop();
