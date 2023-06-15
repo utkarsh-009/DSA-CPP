@@ -1,9 +1,9 @@
 /*
-    I/P: 231*+9-
-    O/P: -4
+    I/P:
+    O/P:
 
-    I/P: 123+*8-
-    O/P: -3
+    I/P:
+    O/P:
 */
 
 #include <bits/stdc++.h>
@@ -20,7 +20,7 @@ using namespace std;
         -> Compute int_val2 'x' int_val1 => And push the result to stack
         Finally, when stack size == 1 => return st.top()
 */
-int evaluatePostfix(string s)
+int evaluatePrefix(string s)
 {
     stack<int> st;
     for (int i = 0; i < s.length(); i++)
@@ -65,6 +65,6 @@ int evaluatePostfix(string s)
 int main()
 {
     string exp = "231*+9-";
-    cout << "Postfix evaluation: " << evaluatePostfix(exp) << endl;
+    cout << "Postfix evaluation: " << evaluatePrefix(exp) << endl;
     return 0;
 }
