@@ -1,9 +1,6 @@
 /*
-    I/P:
-    O/P:
-
-    I/P:
-    O/P:
+    I/P: +*123
+    O/P: 5 (1*2+3 => 2+3 = 5)
 */
 
 #include <bits/stdc++.h>
@@ -12,18 +9,18 @@ using namespace std;
 //  [TC: O(n), AS: O(n)]
 /*
 1.) Create Empty Stack
-2.) Traverse through all the elements of given string. For each char x,
+2.) Traverse through all the elements of given string from right to left. For each char x,
     - If x is operand, push it to stack
     - Else if 'x' is operator:
         -> int_val1 = st.top(); st.pop();
         -> int_val2 = st.top(); st.pop();
-        -> Compute int_val2 'x' int_val1 => And push the result to stack
+        -> Compute int_val1 'x' int_val2 => And push the result to stack
         Finally, when stack size == 1 => return st.top()
 */
 int evaluatePrefix(string s)
 {
     stack<int> st;
-    for (int i = 0; i < s.length(); i++)
+    for (int i = s.length() - 1; i >= 0; i--)
     {
         char c = s[i];
         if (isdigit(c))
@@ -42,16 +39,16 @@ int evaluatePrefix(string s)
             switch (c)
             {
             case '+':
-                res = val2 + val1;
+                res = val1 + val2;
                 break;
             case '-':
-                res = val2 - val1;
+                res = val1 - val2;
                 break;
             case '*':
-                res = val2 * val1;
+                res = val1 * val2;
                 break;
             case '/':
-                res = val2 / val1;
+                res = val1 / val2;
                 break;
             }
 
@@ -64,7 +61,7 @@ int evaluatePrefix(string s)
 
 int main()
 {
-    string exp = "231*+9-";
+    string exp = "+*123";
     cout << "Postfix evaluation: " << evaluatePrefix(exp) << endl;
     return 0;
 }
