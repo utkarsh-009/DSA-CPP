@@ -13,6 +13,33 @@ Only One Element repeats, FIND THE REPEATING ELEMENT without MODIFICATION OF INP
 using namespace std;
 
 // No Auxillary Space required [TC: O(n),AS: O(1)]
+/*
+Note:
+- When one element is repeated in the array it forms a cycle when graph of arr[i] is connected
+- Example:
+    arr[] = {1,3,2,4,6,5,7,3}
+    graph = 1->3->4->6->7->3 (Cycle formed 3->4->6->7->3)
+- As repeating element it at starting point of cycle, we can find the starting point by using slow and fast pointer
+
+TPT: Using slow and fast pointer we can reach the starting point of cycle
+Proof:
+-> Proof1:
+    - Proving both slow and fast pointers will reach destination exactly at same time
+    - As we move slow pointer by 1 and fast pointer by 2. So,
+        slow, fast => slow+1, fast+2 => slow+2, fast+4 =>...=> slow+n, fast+2n.
+        Hence, they meet inside the cycle at some point 'x' distance from starting point of node
+-> Proof2:
+    - We need to prove that after reaching the meeting point of slow and fast pointer. If we shifted slow pointer to 0 and
+    moved both fast and slow pointer by 1 => They will reach at the  starting point of cycle.
+    - Let 'm' be distance from start(0) to starting point of chain length 'c'.
+    - As fast distance moved twice as fast as slow pointer,
+        Fast Dist = 2*(Slow Dist) => (m+x) + c*i = 2*(m+x) + c*j  =>  c*(i-2j) = m+x
+        Hence, c*(i-2j) = m+x => (m+x) is a multiple of cycle length 'c'.
+    - Now as, slow pointer is moved to start position and fast pointer is at meeting position.
+    Hence, (Slow Dist till after m steps) => m => Starting point of cycle
+           (Fast Dist after m steps) => (m+x+m)%c => m => Starting point of cycle
+Hence, using slow and fast pointer we can reach the starting point of cycle.
+*/
 int findRepeating(int arr[], int n) // Not for array, in which 0 is also present as SELF-LOOPS ARE FORMED
 {
     int slow = arr[0], fast = arr[0];
