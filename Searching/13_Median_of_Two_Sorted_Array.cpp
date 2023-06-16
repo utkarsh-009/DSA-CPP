@@ -21,7 +21,7 @@ using namespace std;
     r1 = minimum of arr1 in right set
     r2 = minimum of arr2 in right set
 -> Here, cut1 and cut2 divides arr1 and arr2 such that:
-l1 = arr[cut1-1], r1 = arr[cut1] & l2 = arr[cut2-1], r2 = arr[cut2-1]
+l1 = arr[cut1-1], r1 = arr[cut1] & l2 = arr[cut2-1], r2 = arr[cut2]
 Ex:
 arr1[] = {1,3,4,7,10,12}
 arr2[] = {2,3,6,15}
@@ -45,6 +45,7 @@ float median(int arr1[], int arr2[], int m, int n)
     if (m > n)
         return median(arr2, arr1, n, m); // ensuring that binary search happens on minimum size array
 
+    // NOTE: why high = m?
     int low = 0, high = m, medianPos = ((m + n) + 1) / 2;
     while (low <= high)
     {
