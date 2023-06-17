@@ -27,6 +27,7 @@ void printlist(Node *head)
     } while (p != head);
 }
 
+// O(1)
 Node *insertAtHead(Node *head, int x)
 {
     Node *temp = new Node(x);
