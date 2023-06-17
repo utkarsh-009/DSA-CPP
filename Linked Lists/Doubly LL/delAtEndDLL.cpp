@@ -17,33 +17,39 @@ struct Node
 
 void printlist(Node *head)
 {
-    if (head == NULL)
-        return;
-    Node *p = head;
-    do
+    Node *curr = head;
+    while (curr != NULL)
     {
-        cout << p->data << " ";
-        p = p->next;
-    } while (p != head);
+        cout << curr->data << " ";
+        curr = curr->next;
+    }
+    cout << endl;
 }
 
-Node *insertAtHead(Node *head, int x)
+Node *delEndDLL(Node *head)
 {
-    Node *temp = new Node(x);
     if (head == NULL)
     {
-        temp->next = temp;
-        temp->prev = temp;
-        return temp;
+        return NULL;
     }
 
-    Node *prev = head->prev;
-    prev->next = temp;
-    temp->prev = prev;
+    if (head->next == NULL)
+    {
+        delete head;
+        return NULL;
+    }
 
-    temp->next = head;
-    head->prev = temp;
-    return temp;
+    Node *curr = head;
+    while (curr->next->next != NULL)
+    {
+        curr = curr->next;
+    }
+
+    Node *temp = curr->next;
+    curr->next = NULL;
+    delete temp;
+
+    return head;
 }
 
 int main()
@@ -52,12 +58,10 @@ int main()
     Node *temp1 = new Node(20);
     Node *temp2 = new Node(30);
     head->next = temp1;
-    temp1->next = temp2;
-    temp2->next = head;
-    temp2->prev = temp1;
     temp1->prev = head;
-    head->prev = temp2;
-    head = insertAtHead(head, 5);
+    temp1->next = temp2;
+    temp2->prev = temp1;
+    head = delEndDLL(head);
     printlist(head);
     return 0;
 }
