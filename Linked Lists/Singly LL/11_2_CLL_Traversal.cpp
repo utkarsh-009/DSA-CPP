@@ -52,5 +52,5 @@ int main()
     head->next->next = new Node(30);
     head->next->next->next = head;
 
-    printCLL(head); // Infinite loop
+    printCLL(head); 
 }

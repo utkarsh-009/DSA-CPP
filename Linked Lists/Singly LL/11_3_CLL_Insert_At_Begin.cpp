@@ -27,6 +27,26 @@ void printCLL(Node *head)
     } while (curr != head);
 }
 
+Node *insertAtBeginCLL(Node *head, int x)
+{
+    if (head == NULL)
+    {
+        return new Node(x);
+    }
+
+    Node *tail = head;
+    do
+    {
+        tail = tail->next;
+    } while (tail->next != head);
+
+    Node *temp = new Node(x);
+    tail->next = temp;
+    temp->next = head;
+
+    return temp;
+}
+
 int main()
 {
 
@@ -34,6 +54,7 @@ int main()
     head->next = new Node(20);
     head->next->next = new Node(30);
     head->next->next->next = head;
-
-    printCLL(head); // Infinite loop
+    head = insertBegin(head, 15);
+    printlist(head);
+    return 0;
 }
