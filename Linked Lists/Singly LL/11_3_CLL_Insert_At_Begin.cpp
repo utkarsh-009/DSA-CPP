@@ -14,35 +14,18 @@ struct Node
     }
 };
 
-// To print Circular Linked List
 void printCLL(Node *head)
 {
     if (head == NULL)
         return;
 
-    cout << head->data << " ";
-    for (Node *curr = head->next; curr != head; curr = curr->next)
+    Node *curr = head;
+    do
     {
         cout << curr->data << " ";
-    }
-}
-
-// do while loop better implementation
-/*
-
-void printCLL(Node *head)
-{
-    if (head == NULL)
-        return;
-
-    Node* curr = head;
-    do{
-        cout << curr->data << " ";
         curr = curr->next;
-    }while(curr != head);
+    } while (curr != head);
 }
-
-*/
 
 int main()
 {
