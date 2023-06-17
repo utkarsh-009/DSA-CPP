@@ -32,20 +32,25 @@ void printLL(Node *head)
     }
 }
 
+// O(n): Keeping track of prev, curr, and nextNode in every iteration.
 Node *revLL(Node *head)
 {
+    // Base case
+    if (head == NULL || head->next == NULL)
+        return head;
+
+    Node *prev = NULL;
     Node *curr = head;
-    Node *prevTOcurr = NULL;
 
     while (curr != NULL)
     {
-        Node *temp = curr->next;
-        curr->next = prevTOcurr;
-        prevTOcurr = curr;
-        curr = temp;
+        Node *nextNode = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = nextNode;
     }
 
-    return prevTOcurr;
+    return prev;
 }
 
 int main()
