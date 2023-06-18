@@ -28,6 +28,10 @@ void printLL(Node *head)
 // Using slow and fast pointer
 void removeLoop(Node *head)
 {
+    // Base Case
+    if (head == NULL || head->next == NULL)
+        return;
+
     Node *slow = head;
     Node *fast = head;
 
