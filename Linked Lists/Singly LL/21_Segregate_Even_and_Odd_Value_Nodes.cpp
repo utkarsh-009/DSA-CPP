@@ -15,7 +15,7 @@ struct Node
 };
 
 // To print Linked List
-void printLL(Node *head)
+void printlist(Node *head)
 {
     Node *curr = head;
     while (curr != NULL)
