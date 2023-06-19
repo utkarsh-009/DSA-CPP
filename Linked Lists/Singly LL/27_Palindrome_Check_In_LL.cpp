@@ -12,10 +12,12 @@ struct Node
     }
 };
 
-// Naive Method: [TC: O(n), As: O(1)]
+// Naive Method: [TC: O(n), As: O(n)]
 // Using Array: Store all the data of nodes in array, now check palindrome in the array
 // USing Stack: Store all the data of nodes in stack, now iterate the LL again and pop the data when matched
 
+// Modifying the LL: [TC: O(n), As: O(1)]. We reverse the list after list's middle and assign its head to a rev node.
+// Now iterate one node from start and another from rev while checking their values. If not equal at some iteration => False, else => True
 // Reverse LL
 Node *reverseList(Node *head)
 {
