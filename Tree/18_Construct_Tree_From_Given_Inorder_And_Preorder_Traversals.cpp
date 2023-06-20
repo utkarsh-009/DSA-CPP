@@ -90,12 +90,38 @@ void printInorder(Node *node)
     }
 }
 
+// [TC: O(n), AS: O(n)]
+// Using HashMaps to stores inorder values as key and their indexes are value.
+Node *buildTreeEff(int preorder[], int inorder_start, int inorder_end, unordered_map<int, int> &mp)
+{
+    static int preIdx = 0;
+    // Base Case
+    if (inorder_start > inorder_end)
+        return NULL;
+
+    Node *root = new Node(preorder[preIdx++]);
+
+    int inIdx = mp[root->key];
+    root->left = buildTreeEff(preorder, inorder_start, inIdx - 1, mp);
+    root->right = buildTreeEff(preorder, inIdx + 1, inorder_end, mp);
+
+    return root;
+}
+
 int main()
 {
     int in[] = {5, 10, 30, 20, 6};
     int pre[] = {10, 5, 20, 30, 6};
 
-    Node *root = buildTree(pre, in, 0, 4);
+    unordered_map<int, int> mp;
+    for (int i = 0; i < 5; i++)
+    {
+        mp[in[i]] = i;
+    }
 
-    printInorder(root);
+    Node *root1 = buildTree(pre, in, 0, 4);
+    Node *root2 = buildTreeEff(pre, 0, 4, mp);
+    printInorder(root1);
+    cout << endl;
+    printInorder(root2);
 }
