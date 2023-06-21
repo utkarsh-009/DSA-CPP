@@ -7,8 +7,8 @@ Time required from node 30 (Leaf Node)
    / \
   30  6
 
-O/P: 4
 */
+O/P: 4
 
 #include <bits/stdc++.h>
 using namespace std;
