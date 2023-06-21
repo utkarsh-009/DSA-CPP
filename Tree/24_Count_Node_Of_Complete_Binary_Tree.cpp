@@ -43,6 +43,7 @@ int countNodeEff(Node *root)
     if (root == NULL)
         return 0;
 
+    // Finding Left and Right Subtree height
     int lh = 0, rh = 0;
     Node *curr = root;
     while (curr != NULL)
@@ -62,6 +63,7 @@ int countNodeEff(Node *root)
     {
         return pow(2, lh) - 1;
     }
+
     // Recursievly call for left subtree and right subtree
     else
     {
