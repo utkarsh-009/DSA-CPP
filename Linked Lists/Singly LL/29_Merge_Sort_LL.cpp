@@ -38,77 +38,35 @@ Node *mergeLL(Node *first, Node *second)
         return first;
     }
 
-    Node *curr = NULL, *head = NULL;
-    Node *curr1 = first;
-    Node *curr2 = second;
+    Node *dummyHead = new Node(-1);
+    Node *curr = dummyHead;
 
-    while (curr1 != NULL && curr2 != NULL)
+    while (first != NULL && second != NULL)
     {
-        if (curr1->data < curr2->data)
+        if (first->data < second->data)
         {
-            Node *temp = new Node(curr1->data);
-            if (curr == NULL)
-            {
-                head = temp;
-                curr = head;
-            }
-            else
-            {
-                curr->next = temp;
-                curr = curr->next;
-            }
-            curr1 = curr1->next;
-        }
-        else
-        {
-            Node *temp = new Node(curr2->data);
-            if (curr == NULL)
-            {
-                head = temp;
-                curr = head;
-            }
-            else
-            {
-                curr->next = temp;
-                curr = curr->next;
-            }
-            curr2 = curr2->next;
-        }
-    }
-
-    while (curr1 != NULL)
-    {
-        Node *temp = new Node(curr1->data);
-        if (curr == NULL)
-        {
-            head = temp;
-            curr = head;
-        }
-        else
-        {
-            curr->next = temp;
+            curr->next = first;
+            first = first->next;
             curr = curr->next;
         }
-        curr1 = curr1->next;
-    }
-
-    while (curr2 != NULL)
-    {
-        Node *temp = new Node(curr2->data);
-        if (curr == NULL)
-        {
-            head = temp;
-            curr = head;
-        }
         else
         {
-            curr->next = temp;
+            curr->next = second;
+            second = second->next;
             curr = curr->next;
         }
-        curr2 = curr2->next;
     }
 
-    return head;
+    if (first != NULL)
+    {
+        curr->next = first;
+    }
+    else
+    {
+        curr->next = second;
+    }
+
+    return dummyHead->next;
 }
 
 // Function to split LL
