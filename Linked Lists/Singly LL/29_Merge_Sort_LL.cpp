@@ -28,7 +28,12 @@ void printList(Node *head)
 // Merge Function for Merging Sorted Linked List
 Node *mergeLL(Node *first, Node *second)
 {
-    if (first == NULL || first->next == second)
+    if (first == NULL)
+    {
+        return second;
+    }
+
+    if (second == NULL)
     {
         return first;
     }
