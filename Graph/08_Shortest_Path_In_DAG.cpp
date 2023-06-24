@@ -2,70 +2,6 @@
 #define INF INT_MAX
 using namespace std;
 
-// Adjacency List Node Class: Contains getV(), getWeight() functions
-class AdjListNode
-{
-    int v;
-    int weight;
-
-public:
-    AdjListNode(int _v, int _w)
-    {
-        v = _v;
-        weight = _w;
-    }
-    int getV() { return v; }
-    int getWeight() { return weight; }
-};
-
-// Graph Class: Contains topologicalSortUtil(), addEdge(), shortestPath() functions
-class Graph
-{
-    int V;
-
-    list<AdjListNode> *adj;
-
-    void topologicalSortUtil(int v, vector<bool> visited, stack<int> &Stack);
-
-public:
-    Graph(int V);
-
-    void addEdge(int u, int v, int weight);
-
-    void shortestPath(int s);
-};
-
-// Graph constructor
-Graph::Graph(int V)
-{
-    this->V = V;
-    adj = new list<AdjListNode>[V];
-}
-
-// Add Edge Function
-void Graph::addEdge(int u, int v, int weight)
-{
-    AdjListNode node(v, weight);
-    adj[u].push_back(node);
-}
-
-// Topological Sort
-void Graph::topologicalSortUtil(int v, vector<bool> visited, stack<int> &Stack)
-{
-
-    visited[v] = true;
-
-    list<AdjListNode>::iterator i;
-    for (i = adj[v].begin(); i != adj[v].end(); ++i)
-    {
-        AdjListNode node = *i;
-        if (visited[node.getV()] == false)
-            topologicalSortUtil(node.getV(), visited, Stack);
-    }
-
-    Stack.push(v);
-}
-
 /*
 Shortest Path in DAG
 - Keeping track of minimum distance array, dist[V] = {INF, INF,...} and making sources s as dist[s] = 0
@@ -75,71 +11,79 @@ Shortest Path in DAG
     Relaxation Operation: if(d[v] > d[u] + w(u,v)) => d[v] = d[u] + w(u,v)
 
 Example =>
-        I/P: 0->1 (1)
-         1->2 (3), 1->3 (2)
-         2->3 (4)
-        source = 1
-        O/P: 1, 0, 3, 2
+Input: n = 6, m= 7, edge=[[0,1,2],[0,4,1],[4,5,4],[4,2,2],[1,2,3],[2,3,6],[5,3,1]]
+Output: 0 2 3 6 1 5
 */
 
 // Shortest Path function [TC: O(V+E)]
-void Graph::shortestPath(int s)
+class Solution
 {
-    stack<int> Stack;
-
-    vector<bool> visited(V, false);
-
-    for (int i = 0; i < V; i++)
+public:
+    vector<int> shortestPath(int N, int M, vector<vector<int>> &edge)
     {
-        if (visited[i] == false)
+        // Graph storing u-><v,cost>
+        vector<vector<vector<int>>> adj(N);
+        vector<int> topoSort;
+
+        for (int i = 0; i < M; i++)
         {
-            topologicalSortUtil(i, visited, Stack);
+            adj[edge[i][0]].push_back({edge[i][1], edge[i][2]});
         }
-    }
 
-    // Keeping track of minimum distance array, dist[V] = {INF, INF,...} and making sources s as dist[s] = 0
-    vector<int> dist(V, INF);
-    dist[s] = 0;
-
-    // Using BFS
-    while (Stack.empty() == false)
-    {
-        int u = Stack.top();
-        Stack.pop();
-
-        list<AdjListNode>::iterator i;
-        if (dist[u] != INF)
+        // Modified Topolgical Sort used. As source is only 0. Hence, we will push all the adjacents starting from src 0.
+        queue<int> q;
+        q.push(0);
+        while (!q.empty())
         {
-            for (i = adj[u].begin(); i != adj[u].end(); ++i)
+            int u = q.front();
+            topoSort.push_back(u);
+            q.pop();
+
+            for (auto e : adj[u])
             {
-                // Relaxation Operation
-                if (dist[i->getV()] > dist[u] + i->getWeight())
+                int v = e[0];
+                q.push(v);
+            }
+        }
+
+        // Initially store INF
+        vector<int> dist(N, INT_MAX);
+        dist[0] = 0;
+
+        for (int i = 0; i < topoSort.size(); i++)
+        {
+            int u = topoSort[i];
+            for (auto e : adj[u])
+            {
+                int v = e[0];
+                int cost = e[1];
+                if (dist[v] > dist[u] + cost)
                 {
-                    dist[i->getV()] = dist[u] + i->getWeight();
+                    dist[v] = dist[u] + cost;
                 }
             }
         }
-    }
 
-    // Shortest Path in DAG
-    for (int i = 0; i < V; i++)
-        (dist[i] == INF) ? cout << "INF " : cout << dist[i] << " ";
-}
+        return dist;
+    }
+};
 
 int main()
 {
-    Graph g(6);
-    g.addEdge(0, 1, 2);
-    g.addEdge(0, 4, 1);
-    g.addEdge(1, 2, 3);
-    g.addEdge(4, 2, 2);
-    g.addEdge(4, 5, 4);
-    g.addEdge(2, 3, 6);
-    g.addEdge(5, 3, 1);
+    int n = 6, m = 7;
+    vector<vector<int>> edges{
+        {0, 1, 2},
+        {0, 4, 1},
+        {4, 5, 4},
+        {4, 2, 2},
+        {1, 2, 3},
+        {2, 3, 6},
+        {5, 3, 1}};
 
-    int s = 0;
-    cout << "Following are shortest distances from source " << s << " \n";
-    g.shortestPath(s);
-
-    return 0;
+    Solution obj;
+    vector<int> res = obj.shortestPath(n, m, edges);
+    for (auto x : res)
+    {
+        cout << x << " ";
+    }
 }
