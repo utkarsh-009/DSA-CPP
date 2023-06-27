@@ -20,17 +20,21 @@ vector<int> djikstraOptimised(vector<iPair> adj[], int src, int V)
 
     while (pq.empty() == false)
     {
+        // Getting minimum node. This node needs to be finalised
         int u = pq.top().second;
         pq.pop();
 
+        // Finalising node by updating minimum distance to adjacent nodes
         for (auto x : adj[u])
         {
             int v = x.first;
             int weight = x.second;
 
+            // Relaxation Operation
             if (dist[v] > dist[u] + weight)
             {
                 dist[v] = dist[u] + weight;
+                // As new minimum distance is updated => we push it into pq to finalise it.
                 pq.push({dist[v], v});
             }
         }
