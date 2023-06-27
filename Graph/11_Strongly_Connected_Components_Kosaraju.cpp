@@ -20,8 +20,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//  [TC: ,AS:]
+//  [TC: O(V+E), AS: O(O+V)]
+/*
+Algorithm:
+1.) Order the vertices in decreasing order of finish time
+2.) Reverse all edges
+3.) Do dfs of the reversed graph in order obtained in step1. For every vertex print all the
+reachable vertex as strongly connect component
+*/
 
+// DFS
 void DFS(int u, vector<int> reversed_adj[], vector<bool> &visited)
 {
     visited[u] = true;
@@ -36,6 +44,7 @@ void DFS(int u, vector<int> reversed_adj[], vector<bool> &visited)
     }
 }
 
+// Using stack to store vertices in decreasing order of finish time. Highest finish time will be at top
 void finishTimeOrder(int u, vector<int> adj[], vector<bool> visited, stack<int> &s)
 {
     visited[u] = true;
@@ -51,6 +60,7 @@ void finishTimeOrder(int u, vector<int> adj[], vector<bool> visited, stack<int> 
     s.push(u);
 }
 
+// Reversing edges
 void getTranspose(int V, vector<int> adj[], vector<int> reversed_adj[])
 {
 
