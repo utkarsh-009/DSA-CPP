@@ -23,10 +23,11 @@ using namespace std;
 //  [TC: O(V+E), AS: O(O+V)]
 /*
 Algorithm:
-1.) Order the vertices in decreasing order of finish time
-2.) Reverse all edges
-3.) Do dfs of the reversed graph in order obtained in step1. For every vertex print all the
-reachable vertex as strongly connect component
+1.) Order the vertices in decreasing order of finish time: Done using stack with dfs traversal. The last explored node
+ will be the first to be pushed to the stack
+2.) Reverse all edges: Creating a new 2d adjacency list, this will store the reversed graph i.e. all edges are in reversed order.
+3.) Do dfs of the reversed graph in order obtained in step1. For every vertex print all the reachable vertex as strongly
+ connect component
 */
 
 // DFS
@@ -45,7 +46,7 @@ void DFS(int u, vector<int> reversed_adj[], vector<bool> &visited)
 }
 
 // Using stack to store vertices in decreasing order of finish time. Highest finish time will be at top
-void finishTimeOrder(int u, vector<int> adj[], vector<bool> visited, stack<int> &s)
+void finishTimeOrder(int u, vector<int> adj[], vector<bool> &visited, stack<int> &s)
 {
     visited[u] = true;
 
@@ -63,20 +64,20 @@ void finishTimeOrder(int u, vector<int> adj[], vector<bool> visited, stack<int> 
 // Reversing edges
 void getTranspose(int V, vector<int> adj[], vector<int> reversed_adj[])
 {
-
     for (int u = 0; u < V; u++)
     {
-        for (int v = 0; v < adj[u].size(); v++)
+        for (int v : adj[u])
         {
-            reversed_adj[v].push_back(adj[u][v]);
+            reversed_adj[v].push_back(u);
         }
     }
 }
 
-void printSCC(vector<int> adj[], vector<int> reversed_adj[], int V)
+void printSCC(vector<int> adj[], int V)
 {
     stack<int> s;
-    vector<bool> visited(V);
+    vector<bool> visited(V, false);
+    vector<int> reversed_adj[V];
 
     for (int u = 0; u < V; u++)
     {
@@ -112,7 +113,6 @@ int main()
 {
     int V = 5;
     vector<int> adj[V];
-    vector<int> reversed_adj[V];
 
     addEdge(adj, 1, 0);
     addEdge(adj, 0, 2);
@@ -120,5 +120,5 @@ int main()
     addEdge(adj, 0, 3);
     addEdge(adj, 3, 4);
 
-    printSCC(adj, reversed_adj, V);
+    printSCC(adj, V);
 }
