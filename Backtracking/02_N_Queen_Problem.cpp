@@ -16,68 +16,49 @@ The N Queen is the problem of placing N chess queens on an N×N chessboard so th
 class Solution
 {
 public:
-    void update(vector<string> &board, vector<vector<int>> &vis, int r, int c)
+    // checking if queen is present or not
+    bool isSafe(vector<string> &board, int r, int c)
     {
-        board[r][c] = 'Q';
         int n = board.size();
         for (int i = 0; i < n; i++)
         {
-            vis[i][c]++;
-            vis[r][i]++;
+            if (board[r][i] == 'Q' || board[i][c] == 'Q')
+            {
+                return false;
+            }
         }
 
         for (int i = 0, j = 0; i < n && j < n; i++, j++)
         {
             if (r + i < n && c + j < n)
-                vis[r + i][c + j]++;
+                if (board[r + i][c + j] == 'Q')
+                {
+                    return false;
+                }
 
             if (r - i >= 0 && c + j < n)
-                vis[r - i][c + j]++;
+                if (board[r - i][c + j] == 'Q')
+                {
+                    return false;
+                }
 
             if (r + i < n && c - j >= 0)
-                vis[r + i][c - j]++;
+                if (board[r + i][c - j] == 'Q')
+                {
+                    return false;
+                }
 
             if (r - i >= 0 && c - j >= 0)
-                vis[r - i][c - j]++;
-        }
-    }
-
-    void outdate(vector<string> &board, vector<vector<int>> &vis, int r, int c)
-    {
-        int n = board.size();
-        board[r][c] = '.';
-        for (int i = 0; i < n; i++)
-        {
-            vis[i][c]--;
-            vis[r][i]--;
+                if (board[r - i][c - j] == 'Q')
+                {
+                    return false;
+                }
         }
 
-        for (int i = 0, j = 0; i < n && j < n; i++, j++)
-        {
-            if (r + i < n && c + j < n)
-                vis[r + i][c + j]--;
-
-            if (r - i >= 0 && c + j < n)
-                vis[r - i][c + j]--;
-
-            if (r + i < n && c - j >= 0)
-                vis[r + i][c - j]--;
-
-            if (r - i >= 0 && c - j >= 0)
-                vis[r - i][c - j]--;
-        }
-    }
-
-    bool isSafe(int r, int c, int n, vector<vector<int>> &vis)
-    {
-        if (r < 0 || c < 0 || r >= n || c >= n || vis[r][c])
-        {
-            return false;
-        }
         return true;
     }
 
-    void solve(vector<vector<string>> &ans, vector<string> board, vector<vector<int>> &vis, int r, int c, int q)
+    void helper(vector<string> &board, vector<vector<string>> &ans, int r, int c, int q)
     {
         int n = board.size();
         if (q == n)
@@ -88,33 +69,26 @@ public:
 
         for (int i = 0; i < n; i++)
         {
-            if (isSafe(i, c, n, vis))
+            if (isSafe(board, i, c))
             {
-                update(board, vis, i, c);
-                solve(ans, board, vis, i, c + 1, q + 1);
-                outdate(board, vis, i, c);
+                board[i][c] = 'Q';
+                helper(board, ans, i, c + 1, q + 1);
+                board[i][c] = '.'; // backtrack
             }
         }
     }
 
     vector<vector<string>> solveNQueens(int n)
     {
-        int cnt = 0;
-
-        vector<string> board(n);
-        for (int i = 0; i < n; i++)
-            for (int j = 0; j < n; j++)
-                board[i].push_back('.');
+        string str;
+        str.append(n, '.');
+        vector<string> board(n, str);
 
         vector<vector<string>> ans;
-        vector<vector<int>> vis(n, vector<int>(n, 0));
-
-        solve(ans, board, vis, 0, 0, 0);
-
+        helper(board, ans, 0, 0, 0);
         return ans;
     }
 };
-
 #include <bits/stdc++.h>
 using namespace std;
 
