@@ -63,8 +63,8 @@ void fillLPSEfficient(string str, int *lps)
     {
         /*
         KMP Algorithm:
-        Case1 (When characters match): if len = lps[i-1] and str[i] == str[len] => lps[i] = len+1; 
-        Case2 (When characters do not match): 
+        Case1 (When characters match): if len = lps[i-1] and str[i] == str[len] => lps[i] = len+1;
+        Case2 (When characters do not match):
                 if str[i] != str[len] :
                     a.) if len == 0 => lps[i] = 0
                     b.) Else, we recursively apply
@@ -82,13 +82,13 @@ void fillLPSEfficient(string str, int *lps)
         // Case2
         else
         {
-            // Case2a
+            // Case2a: there is no proper prefix that matches the suffix at that particular index i.e. lps not found
             if (len == 0)
             {
                 lps[i] = 0;
                 i++;
             }
-            // Case2b
+            // Case2b: we backtrack to a potential position where a longer proper prefix that is also a suffix may exist.
             else
             {
                 len = lps[len - 1];
