@@ -49,7 +49,12 @@ ll tabDP(int coins[], int numberOfCoins, int value)
     // Base case: It takes 1 way to make a value of 0 (by not using any coins).
     dp[0] = 1;
 
-    // NOTE: for each coin, we determine the total number of ways to make each value.
+    /*
+    // NOTE: We are using each coin to sum upto to a certain value => Distinct Way of Calculating
+    Ex: coins[] = {1,2}, value = 3 => Using this technique the only possible ways calculated are (1+1+1,1+2)
+    Because we are using a specific coin denomination used to get particular value. Then we use next denomination
+    Hence, this ensures that the coin denomination are not repeated.
+    */
     for (int ci = 0; ci < numberOfCoins; ci++)
     {
         // Iterate over the values from 1 to 'value'.
