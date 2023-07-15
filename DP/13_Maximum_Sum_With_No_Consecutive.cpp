@@ -8,7 +8,7 @@ Output: 60 (10+20+30=60)
 #include <bits/stdc++.h>
 using namespace std;
 
-// Tabulation DP
+// Tabulation DP: [TC: O(n*n), AS: O(n)]
 int findMaxLoot(int arr[], int n)
 {
     // Base Case: Only one house to loot
@@ -31,6 +31,7 @@ int findMaxLoot(int arr[], int n)
     return maxLoot; // Return the maximum loot possible
 }
 
+// Note: This can be space optimised to O(1) as we are using only prev and prev to prev obtained solution to calculate current
 int main()
 {
     int n = 6, arr[] = {10, 5, 15, 20, 2, 30};
