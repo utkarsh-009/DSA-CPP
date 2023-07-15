@@ -16,7 +16,10 @@ using namespace std;
 
 /*
 Recursive Formula: res(n) = res(0)*res(n-1) + res(1)*res(n-2)+res(2)*res(n-3)+... +res(n-1)*res(0)
-NOTE: res(0)*res(n-1) => 0 keys in LHS, 1 key as Root, n-1 keys in RHS
+
+IMP NOTE:
+- res(0)*res(n-1) => 0 keys in LHS, 1 key as Root, n-1 keys in RHS
+- This same formula can be used to calculation of CATALAN NUMBER
 */
 int tabDP(int N)
 {
