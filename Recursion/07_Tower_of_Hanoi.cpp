@@ -55,6 +55,46 @@ void TOH(int n, char A, char B, char C)
     TOH(n - 1, B, A, C);                                              // Move (n-1) Disks from B to C taking A as aux
 }
 
+/*
+// FOR BETTER UNDERSTANDING:
+
+Standard Question (total no of moves required to move disks from source to destination):
+-> Base Case: If there is only one disk (N==1), it is directly moved from the from rod to the
+ to rod, and the function prints the corresponding move statement.
+-> Otherwise: 
+1.)The function recursively calls itself with N-1 disks, moving them from the
+from source rod to the aux rod. The return value of this recursive call is added to count.
+2.) After the recursive call, the function prints the move statement for moving the Nth disk
+from the from rod to the to rod and increments the count by 1 as move is performed.
+3.) Another recursive call is made with N-1 disks, moving them from the aux rod to the to
+destination rod. The return value of this recursive call is stored in count2.
+Finally, the function returns the sum of count1, count2, and 1 (representing the current move).
+
+long long toh(int N, int from, int to, int aux) {
+    long long count = 0;
+
+    if(N == 1)
+    {
+        cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+        count++;
+        return count;
+    }
+
+    // Moving disk from src to aux
+    count += toh(N-1, from, aux, to);
+
+    // Printing the instruction and counting the move
+    cout<<"move disk "<<N<<" from rod "<<from<<" to rod "<<to<<endl;
+    count++;
+
+    // Moving disk from aux to dst
+    count += toh(N-1, aux, to, from);
+
+    return count;
+}
+
+*/
+
 int main()
 {
     int n = 3;
