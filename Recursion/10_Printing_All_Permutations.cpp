@@ -18,6 +18,7 @@ void printAllPerm(string &s, int l, int r)
         return;
     }
 
+    // Backtracking Approach
     for (int i = l; i <= r; i++)
     {
         swap(s[l], s[i]);
