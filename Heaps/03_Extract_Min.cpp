@@ -99,10 +99,9 @@ public:
         }
 
         int mini = arr[0];
-
-        swap(arr[0], arr[size - 1]);
-        size--;
+        arr[0] = arr[size - 1];
         minHeapifyRecur(0);
+        size--;
 
         return mini;
     }
