@@ -39,9 +39,10 @@ void buildMaxHeap(int arr[], int n)
 void heapSort(int arr[], int n)
 {
     buildMaxHeap(arr, n);
+    // We know max element exists at arr[0]. Hence, we swap max element at instance to ith index (start from n-1)
     for (int i = n - 1; i >= 1; i--)
     {
-        swap(arr[0], arr[i]);  // Swapping max element with last element
+        swap(arr[0], arr[i]);  // Swapping max element with last element => Max element will be present at last position
         maxHeapify(arr, i, 0); // To maintain max heap property after modification
     }
 }
