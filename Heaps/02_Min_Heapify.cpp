@@ -62,6 +62,8 @@ public:
     // Recursive [TC: O(logn), AS: O(h)] NOTE: Iterative Soln takes AS: O(1)
     void minHeapifyRecur(int i) // Parent Index given as parameter
     {
+        // We find the smallest amongst: left, right, root. If root is not smallest => violation.
+
         // Finding the indexes of left and right child
         int lIdx = left(i), rIdx = right(i);
         int smallest = i;
