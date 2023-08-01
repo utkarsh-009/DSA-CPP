@@ -9,7 +9,7 @@ The merged list will be [1, 2, 3, 4, 5, 6, 7, 8, 9].
 
 #define ppi pair<int, pair<int, int>>
 
-// [TC: O(k*k*logk)]
+// [TC: O(k*k*logk) = (no of arrays)*(size of arrays)*log(no of arrays)]
 class Solution
 {
 public:
@@ -19,11 +19,15 @@ public:
         vector<int> ans;
         // pair<int,pair<int,int>> => <value, <pos of array, index of value in array>>
         priority_queue<ppi, vector<ppi>, greater<ppi>> pq;
+
+        // Initially, we are pushing first element of all k sorted array.
         for (int i = 0; i < k; i++)
         {
             pq.push({arr[i][0], {i, 0}});
         }
 
+        // Now, we make sure that size of heap remains k, i.e.
+        //  As soon as we put the minimum element of a specific array in ans => We push the next element of that array in heap.
         while (!pq.empty())
         {
             int mini = pq.top().first;
